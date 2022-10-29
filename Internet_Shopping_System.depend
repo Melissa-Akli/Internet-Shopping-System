@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1667053861 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\shop.cpp
+	"Shop.h"
+
+1667061400 c:\users\zak\desktop\poo projects\internet_shopping_system\include\shop.h
+	<iostream>
+	<Category.h>
+	<list>
+
+1667054440 c:\users\zak\desktop\poo projects\internet_shopping_system\include\category.h
+	<iostream>
+	<list>
+
+1667057736 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
+	"User.h"
+
+1667061400 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
+	<iostream>
+
+1667053881 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\category.cpp
+	"Category.h"
+
+1667058581 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\main.cpp
+	<iostream>
+	<User.h>
+	<Shop.h>
+
