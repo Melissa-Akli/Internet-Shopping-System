@@ -2,10 +2,11 @@
 1667053861 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\shop.cpp
 	"Shop.h"
 
-1667061400 c:\users\zak\desktop\poo projects\internet_shopping_system\include\shop.h
+1667071496 c:\users\zak\desktop\poo projects\internet_shopping_system\include\shop.h
 	<iostream>
 	<Category.h>
 	<list>
+	<queue>
 
 1667054440 c:\users\zak\desktop\poo projects\internet_shopping_system\include\category.h
 	<iostream>
@@ -14,7 +15,7 @@
 1667057736 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
 	"User.h"
 
-1667061400 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
+1667071501 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
 	<iostream>
 
 1667053881 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\category.cpp

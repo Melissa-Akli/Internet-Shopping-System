@@ -2,6 +2,7 @@
 #include<iostream>
 #include<Category.h>
 #include<list>
+#include<queue>
 using namespace std;
 
 
@@ -15,11 +16,13 @@ class Shop
     public:
         Shop();
         ~Shop();
+        void AddRequest(); // by membership and time ...
         string CheckRequest();
 
 
 
     private:
+        queue <Order>Request;
         list<Category> MyShop;
 };
 
