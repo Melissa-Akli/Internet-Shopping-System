@@ -16,7 +16,16 @@ class Shop
     public:
         Shop();
         ~Shop();
+
+        void AddCatogory(string );
+        void deleteCategory();
+
         void AddRequest(); // by membership and time ...
+
+        // add order or add request need to have the time now and bool membership as parameters
+        // we have to add the time because when we go to add this order we check first time and them membership in the main
+
+
         bool CheckRequest(); // before serving the customer
 
 
