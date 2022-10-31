@@ -2,27 +2,40 @@
 1667053861 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\shop.cpp
 	"Shop.h"
 
-1667071496 c:\users\zak\desktop\poo projects\internet_shopping_system\include\shop.h
+1667128202 c:\users\zak\desktop\poo projects\internet_shopping_system\include\shop.h
 	<iostream>
 	<Category.h>
 	<list>
 	<queue>
 
-1667054440 c:\users\zak\desktop\poo projects\internet_shopping_system\include\category.h
+1667128202 c:\users\zak\desktop\poo projects\internet_shopping_system\include\category.h
 	<iostream>
 	<list>
+	<Product.h>
 
-1667057736 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
+1667086032 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
 	"User.h"
 
-1667071501 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
+1667088416 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
 	<iostream>
 
 1667053881 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\category.cpp
 	"Category.h"
 
-1667058581 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\main.cpp
+1667089572 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\main.cpp
 	<iostream>
 	<User.h>
 	<Shop.h>
+
+1667078269 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\order.cpp
+	"Order.h"
+
+1667128202 c:\users\zak\desktop\poo projects\internet_shopping_system\include\order.h
+	<list>
+
+1667126650 c:\users\zak\desktop\poo projects\internet_shopping_system\include\product.h
+	<iostream>
+
+1667126564 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\product.cpp
+	"Product.h"
 

@@ -4,6 +4,7 @@
 using namespace std;
 
 
+#include<Product.h>
 
 #ifndef CATEGORY_H
 #define CATEGORY_H
@@ -18,17 +19,10 @@ class Category
 
 
 
+
+
     private:
-        string name;
-
-        struct Product
-        {
-            string name;
-            string ID;
-            int unitprice;
-            int quantity;
-        };
-
+        string Category_name;
         list<Product> Storage;
 
 };

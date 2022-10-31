@@ -13,33 +13,26 @@ class User
         User();
         ~User();
         bool checkMembership();
-        void getInfos();
-        void SendRequest();
-        void DeleteItem();
-        void AddItem();
-        void Display_PurshaseList();
+        void update_address();  // NEED WORK
+        void update_creditCard();    // NEED WORK
+        void SendRequest();           // NEED WORK
 
 
 
 
+    private:
 
-    private://________________________________________________________________
-
-        string name;
+        string User_name;
 
          struct address
         {
             string region;
             string street;
             int home_number;
-        } ;
-
-        address Home_address;
+        } Home_address;
 
 
-        list <Product> PurshaseList;
-
-        static double membership;
+        double membership;
 
         // a structure date
         struct date
@@ -55,10 +48,11 @@ class User
         {
            date ExpiryDate;
            string number;
-        };
+
+        }CreditCard;
 
         //object card
-        Card CreditCard;
+
 
 };
 
