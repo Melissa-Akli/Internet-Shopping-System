@@ -17,6 +17,9 @@ class Shop
         Shop();
         ~Shop();
 
+        void add_user(); // it add the user to both file and hashtable
+        void delete_user(); // before dleting the object user we gotta delete it from the hashtable and file
+
         void AddCatogory(string );
         void deleteCategory();
 
@@ -38,6 +41,7 @@ class Shop
 
     private:
         //queue <Order>Request;
+        // HashTable to register user
         list<Category> MyShop;
 };
 

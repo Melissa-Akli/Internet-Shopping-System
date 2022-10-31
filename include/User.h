@@ -1,5 +1,6 @@
 
 #include<iostream>
+#include<string>
 using namespace std;
 
 #ifndef USER_H
@@ -23,7 +24,14 @@ class User
     private:
 
         string User_name;
+        //string password????
+        // should we add an email or user phone_number ?????
+        //We need need to call the user before delivering the order
 
+        // verifiying using algerian phone number's form !
+       // string phone_number;
+
+        // a structure address
          struct address
         {
             string region;
@@ -53,6 +61,20 @@ class User
 
         //object card
 
+
+        // utility function to help check the validity of a name
+        bool Is_valid(string name)
+        {
+            for(char c: User_name)
+            {
+                if(!isalpha(c)&& c!=' ')   //check here for whitespace function
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
 
 };
 

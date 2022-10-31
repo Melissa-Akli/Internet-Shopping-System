@@ -26,10 +26,11 @@ int main()
             }
         }
 
-
+// case it's a user
     if(a==1)
     {
         cout<<"1-Log_in "<<"\t"<<"2-Register"<<endl;
+        cout<<" Enter 1 or 2 : ";
         cin>>a;
 
         if(a!=1 || a!=2)
@@ -44,13 +45,14 @@ int main()
 
          if(a==1)
         {
-             // check for new user and old user if it exist
+             // check  old user if it exist
+             // check if password valid
         }
 
 
         else
         {
-            User NewUser; // add this newuser to the files or list of existing users
+            User NewUser; // add this new_user to the files or list of existing users
         }
 
 
@@ -58,6 +60,10 @@ int main()
 
     } //end if user -----------------------------------------------------------------------------------------------
 
+
+
+
+// case of a shop
 
     else
     {
