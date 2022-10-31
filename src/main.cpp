@@ -12,7 +12,7 @@ int main()
     cout<<" -------------------------- INTERNET SHOPPING SYSTEM -------------------------------"<<endl;
 
     cout<<"\nAre You : "<<endl;
-    cout <<"1- Costumer "<<"\t"<<"2- Shop Owner"<<endl;
+    cout <<"1- Costumer "<<"\t"<<"2- Admin"<<endl;
     cout<<" Enter 1 or 2 : ";
     cin>>a;
 
@@ -53,9 +53,15 @@ int main()
         else
         {
             User NewUser; // add this new_user to the files or list of existing users
+            NewUser.display_profile();
         }
 
 
+
+      // display the availble services
+      // display profile
+      // update profile
+      // display purchase historique .....
 
 
     } //end if user -----------------------------------------------------------------------------------------------

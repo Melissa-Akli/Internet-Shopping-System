@@ -51,6 +51,117 @@ User::User()
      getline(cin>>ws, Home_address.region);
 
      // cheking address's validity
+     cout <<Home_address.region;
+
+
+     while(!Is_valid(Home_address.region))
+     {
+         cout<<"Invalid Region name please try again !"<<endl;
+         cout<<"Region :";
+         getline(cin>>ws, Home_address.region ); // is valid returns true even it's false !!!!!!!!!!!! why
+     }
+
+
+     cout<<"Street : ";
+     getline(cin>>ws, Home_address.street);
+
+     // cheking address's validity
+
+     while(!Is_valid(Home_address.street))   // is valid returns true even it's false !!!!!!!!!!!! why
+     {
+         cout<<"Invalid Region name please try again !"<<endl;
+         cout<<"Street : ";
+         getline(cin>>ws, Home_address.street);
+     }
+
+
+      cout<<"Home Number : ";
+     cin>> Home_address.home_number;
+
+
+      cout<<"Credit Card : "<<endl;//-------------------------------------------------------------------
+
+      cout<<"Number : ";
+      getline(cin>>ws,CreditCard.number );
+
+      while(!isvalid_Number(CreditCard.number))
+      {
+          cout<<"Invalid number , please try again !"<<endl;
+          cout<<"Number : ";
+          getline(cin>>ws,CreditCard.number );
+      }
+
+
+      cout<<"ExpiryDate  : "<<endl;
+
+      // there is two ways here , read the expiry date as a string and then separate it
+      // or cin one by one ??????????????????
+
+      cout<<"Day :";
+      cin>>CreditCard.ExpiryDate.day;
+
+      while(CreditCard.ExpiryDate.day<1 && CreditCard.ExpiryDate.day>31)
+      {
+          cout<<"Invalid date ! please enter it again "<<endl;
+          cout<<"Day :";
+          cin>>CreditCard.ExpiryDate.day;
+
+      }
+
+
+      cout<<"Month :";
+      cin>>CreditCard.ExpiryDate.month;
+
+      while(CreditCard.ExpiryDate.month<1 && CreditCard.ExpiryDate.month>12)
+      {
+          cout<<"Invalid date ! please enter it again "<<endl;
+          cout<<"Month :";
+          cin>>CreditCard.ExpiryDate.month;
+
+      }
+
+      cout<<"Year :";
+      cin>>CreditCard.ExpiryDate.year;
+
+      //Credit cards expire every three to five years
+
+      while(CreditCard.ExpiryDate.year<2022 || CreditCard.ExpiryDate.year >2070) //???
+      {
+          cout<<"Invalid date ! please enter it again "<<endl;
+          cout<<"Year :";
+          cin>>CreditCard.ExpiryDate.year;
+
+      }
+
+
+}   // end of default constructor
+
+
+
+
+// NEED WORK !!!!!!!!!!!!!!!!
+User::~User()
+{
+    //dtor
+}
+
+
+bool User::checkMembership()
+{
+    if(membership>=100000) return true;
+    return false;
+}
+
+
+
+void User:: update_address()
+{
+    cout<<"Enter the new address : "<<endl;
+
+     cout<<"Region : ";
+     getline(cin>>ws, Home_address.region);
+
+     // cheking address's validity
 
      while(!Is_valid(Home_address.region))
      {
@@ -77,9 +188,12 @@ User::User()
      cin>> Home_address.home_number;
 
 
-      cout<<"Credit Card : "<<endl;//-------------------------------------------------------------------
+}
 
-      cout<<"Number : ";
+
+void User::update_creditCard()
+{
+       cout<<"Number : ";
       getline(cin>>ws,CreditCard.number );
 
 
@@ -114,9 +228,9 @@ User::User()
       cout<<"Year :";
       cin>>CreditCard.ExpiryDate.year;
 
-      //Credit cards expire every three to five years !
+      //Credit cards expire every three to five years
 
-      while(CreditCard.ExpiryDate.year<2022 && CreditCard.ExpiryDate.year >2027)
+      while(CreditCard.ExpiryDate.year<2022 && CreditCard.ExpiryDate.year >2070) //???
       {
           cout<<"Invalid date ! please enter it again "<<endl;
           cout<<"Year :";
@@ -124,23 +238,50 @@ User::User()
 
       }
 
-
-}   // end of default constructor
-
-
-
-
-// NEED WORK !!!!!!!!!!!!!!!!
-User::~User()
-{
-    //dtor
 }
 
 
-bool checkMembership();
-        void update_address();  // NEED WORK
-        void update_creditCard();    // NEED WORK
-        void SendRequest();           // NEED WORK
+
+void User::display_profile()
+{
+  cout<<"Name : "<<User_name<<endl;
+  cout<<"Address :"<<endl;
+  cout<<"Region : "<<Home_address.region;
+  cout<<"\t Street : "<<Home_address.street;
+  cout<<"\t Home Number : "<<Home_address.home_number<<endl;
+
+  cout<<"Credit Card ID : "<<CreditCard.number;
+  cout<<"\t Expiry date : "<<CreditCard.ExpiryDate.day;
+  cout<<" / "<<CreditCard.ExpiryDate.month;
+  cout<<" / "<<CreditCard.ExpiryDate.year<<endl;
+   if(checkMembership()) cout<<"Membership : member "<<endl;
+    else "Membership : Not a member yet !";
+}
+
+
+// getters
+
+string User::get_name()const
+{
+    return User_name;
+}
+
+
+address User::get_address()const
+{
+   return Home_address;
+}
+
+
+date User::get_ExpiryDate()const
+{
+    return CreditCard.ExpiryDate;
+}
+
+string User::get_cardID()const
+{
+    return CreditCard.number;
+}
 
 
 

@@ -17,7 +17,7 @@ class Order
 
 
     private:
-        bool membership;
+
       // because if the user choose to send an order we gotta create the order i  the main
       // the we compare it in the main using time and membership
 
