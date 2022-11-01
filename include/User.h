@@ -101,8 +101,8 @@ class User
            date ExpiryDate;
            string number;
 
-           Card():number("");
-           Card( date d , string n):ExpiryDate(d.day,d.month, d.year), number(n){};
+           Card():number("") {}
+           Card( date d , string n):ExpiryDate(d.day,d.month, d.year), number(n) {}
 
 
         }; // end of card
