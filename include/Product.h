@@ -4,9 +4,13 @@
 #include <string>
 using std::string;
 
+class order;
 class Product
 {
     public:
+
+
+        friend class order;
 
         Product();    //the default constructor
         Product(string,string,double,long int);   //the parameterized constructor

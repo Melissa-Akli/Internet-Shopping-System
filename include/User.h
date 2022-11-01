@@ -60,7 +60,7 @@ class User
 
         string User_name;
         double membership;
-        stack<Order> histric;// but we just can see the last order top
+        stack<order> histric;// but we just can see the last order top
 
         address Home_address;
 
