@@ -1,6 +1,7 @@
 #include "Product.h"
 #include <string>
 #include <iostream>
+#include <ctype.h>
 
 
 using std::cout;
@@ -50,14 +51,27 @@ void Product::setUnit_price(double price)
 
 void Product::setProduct_ID(string identifier)
 {
-    if( ID.length()<=191)
+    if( ID.length()<=12)
     {
+        for(int i=0;i<identifier.length();i++)
+        {
+          if(!isdigit(identifier[i]))
+            {
+                cout<<"The ID is composed only of numbers "<<endl;
+                 break;
+            }
+        }
+    }
+
+       if( ID.length()<=12)
+       {
+
+
         if(existentID(identifier)==false)
             {ID=identifier;}
-            else { cout<<" The identifier you inserted already exists"<<endl;}   //i should here check also if it's a set of digits only
+            else { cout<<" The identifier you inserted already exists"<<endl;}   //i should here check also if it's a set of digits only or no
     }
     else{cout<<"The number of digits cannot exceed 191!"<<endl;}
-
 
 }
 
@@ -94,5 +108,14 @@ void Product::ProductDescription(void)const
    cout<<endl;
 
 
+}
+
+
+
+
+bool Product::operator==(const Product & pro)const
+{
+    if(name==pro.name && ID==pro.ID && unitprice==pro.unitprice )
+        return true;
 }
 
