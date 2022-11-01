@@ -149,10 +149,11 @@ void User::update_creditCard()
 void User::display_profile()
 {
   cout<<"Name : "<<User_name<<endl;
-  cout<<"Address :"<<endl;
-  cout<<"Region : "<<Home_address.region;
-  cout<<"\t Street : "<<Home_address.street;
-  cout<<"\t Home Number : "<<Home_address.home_number<<endl;
+  cout<<"Address : ";
+  cout<<Home_address.home_number<<" ";
+  cout<<Home_address.street<<" ";
+  cout<<Home_address.region<<endl;
+
 
   cout<<"Credit Card ID : "<<CreditCard.number;
   cout<<"\t Expiry date : "<<CreditCard.ExpiryDate.day;
@@ -184,6 +185,12 @@ void User::update_password()
 {
     cout<<"Enter password : ";
     getline(cin>>ws, password);
+
+    while(Invalid_password(password))
+    {
+        cout<<"Invalid password ! try again : ";
+        getline(cin>>ws, password);
+    }
 }
 
 

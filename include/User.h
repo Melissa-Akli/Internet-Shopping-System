@@ -35,7 +35,17 @@ using namespace std;
         }
 
 
+         bool Invalid_password(string pass)
+         {
+             if(isdigit(pass[0])) return true;
 
+             for(char c: pass)
+             {
+                 if(c==' ') return true ;
+             }
+
+             return false;
+         }
 
 
 #ifndef USER_H
