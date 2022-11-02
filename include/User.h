@@ -6,7 +6,19 @@ using namespace std;
 
 
 
-//____________________________________UTILITY_FUNCTIONS__________________________________________________________
+
+//____________________________________FUNCTIONS__________________________________________________________
+
+
+    bool valid_username(const string & username)
+    {
+        if(username.empty())return false;
+        if(username.size()<3)return false;
+        if(!isalpha(username[0]))return false;
+
+        return true ;
+    }
+
 
     // utility function to help check the validity of a name
 
@@ -50,7 +62,7 @@ using namespace std;
 
 
 
- //_____________________________________________ STRACTURES ______________________________________________________________________
+ //_____________________________________________ STRUCTURES ______________________________________________________________________
 
 
         // we define the structure here coz we need them in the implementation ....
@@ -110,11 +122,12 @@ using namespace std;
   };// end of address
 
 
-  //____________________________________________________CLASS USER_______________________________________________________
+
+//____________________________________________________CLASS USER_______________________________________________________
+
 
 #ifndef USER_H
 #define USER_H
-
 
 
 class User
@@ -122,7 +135,7 @@ class User
 
     public:
 
-        User(string , string, string ,int  ,string , int , int , int );
+        User(string ,string , string, string ,int  ,string , int , int , int );
         User();
         ~User();
 
@@ -131,8 +144,6 @@ class User
         date get_ExpiryDate()const;
         string get_cardID()const;
 
-        void set_name(string );
-        void set_password(string);
 
         bool checkMembership();
         void update_name();

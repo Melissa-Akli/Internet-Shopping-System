@@ -1,26 +1,15 @@
 #include "User.h"
 
 
-void User::set_name(string n )
-{
-  User_name=n;
-}
-
-void User::set_password(string pass)
-{
-    password=pass;
-}
-
-
-
 //constructor
 // to test data in main
 
-User::User(string username, string region , string street, int home_num,string cardnumber , int d , int m , int y )
+User::User(string username,string pass, string region , string street, int home_num,string cardnumber , int d , int m , int y )
 :Home_address(region,street,home_num), CreditCard(d,m,y,cardnumber)
 {
     membership=0;
-   set_name(username);
+   User_name=(valid_username(username))? username:" ";
+   password=(!Invalid_password(pass))? pass: " ";
 
 } // end of parameterized constructor
 
@@ -170,7 +159,7 @@ void User::update_name()
 
      // checking name's validity
 
-     while(!Is_valid_name(User_name))
+     while(!valid_username(User_name))
      {
          cout<<"Invalid user name please try again !"<<endl;
          cout<<"Name: ";

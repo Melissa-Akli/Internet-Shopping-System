@@ -1,7 +1,9 @@
 
 #include<iostream>
 #include<Category.h>
-
+#include<User.h>
+#include<Order.h>
+#include<unordered_map>
 using namespace std;
 
 
@@ -39,9 +41,10 @@ class Shop
 */
 
     private:
-        //queue <Order>Request;
-        // HashTable to register user
-        list<Category> MyShop;
+
+        unordered_map <string ,User> users;
+
+
 };
 
 #endif // SHOP_H
