@@ -17,10 +17,10 @@
 1667424123 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
 	"User.h"
 
-1667425512 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
+1667429511 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
 	<iostream>
-	<string>
 	<Order.h>
+	"functions.h"
 
 1667053881 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\category.cpp
 	"Category.h"
@@ -52,6 +52,13 @@
 1667414672 c:\users\zak\desktop\poo projects\internet_shopping_system
 
 1667425410 c:\users\zak\desktop\poo projects\internet_shopping_system\include\structures_and_ functions.h
+	<iostream>
+	<string>
+
+1667429312 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\functions.cpp
+	"functions.h"
+
+1667429431 c:\users\zak\desktop\poo projects\internet_shopping_system\include\functions.h
 	<iostream>
 	<string>
 

@@ -1,11 +1,8 @@
 #include<iostream>
 using namespace std;
-
+#include "functions.h"
 #include<User.h>
 #include<Shop.h>
-
-
-
 
 
 int main()

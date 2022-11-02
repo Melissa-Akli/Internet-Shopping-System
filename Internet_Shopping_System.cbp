@@ -41,6 +41,7 @@
 		<Unit filename="include/Product.h" />
 		<Unit filename="include/Shop.h" />
 		<Unit filename="include/User.h" />
+		<Unit filename="include/functions.h" />
 		<Unit filename="include/structures_and_ functions.h" />
 		<Unit filename="include/utility_functions.h" />
 		<Unit filename="src/Category.cpp" />
@@ -48,6 +49,7 @@
 		<Unit filename="src/Product.cpp" />
 		<Unit filename="src/Shop.cpp" />
 		<Unit filename="src/User.cpp" />
+		<Unit filename="src/functions.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
