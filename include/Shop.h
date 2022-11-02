@@ -1,8 +1,7 @@
 
 #include<iostream>
 #include<Category.h>
-#include<list>
-#include<queue>
+
 using namespace std;
 
 
@@ -19,7 +18,7 @@ class Shop
 
         void add_user(); // it add the user to both file and hashtable
         void delete_user(); // before dleting the object user we gotta delete it from the hashtable and file
-
+/*
         void AddCatogory(string );
         void deleteCategory();
 
@@ -37,7 +36,7 @@ class Shop
     int delivery(); // will use the remove_request function  , calculate distance and return price
     int bill();// price of delivery +purchase+ , increase total purchase
     bool pay_bill();// check if the bill is successfully payed
-
+*/
 
     private:
         //queue <Order>Request;

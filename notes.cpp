@@ -20,6 +20,7 @@ public:
     void add_user();// to insert a user inside the hash table
     void remove_user();// to remove a user
     bool check_if_user();// if he has an account    searching in the hash table
+
     // products
     void add_product();// check if it exist we increase the availabe-quentity otherwise we create a new product
     void decrease_quantity();// delete product

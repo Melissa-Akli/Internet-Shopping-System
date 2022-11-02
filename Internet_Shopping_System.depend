@@ -2,48 +2,45 @@
 1667053861 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\shop.cpp
 	"Shop.h"
 
-1667243866 c:\users\zak\desktop\poo projects\internet_shopping_system\include\shop.h
+1667414320 c:\users\zak\desktop\poo projects\internet_shopping_system\include\shop.h
 	<iostream>
 	<Category.h>
-	<list>
-	<queue>
 
 1667128202 c:\users\zak\desktop\poo projects\internet_shopping_system\include\category.h
 	<iostream>
 	<list>
 	<Product.h>
 
-1667254976 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
+1667400152 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
 	"User.h"
 
-1667319827 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
+1667414659 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
 	<iostream>
-	<string>
-	<stack>
-	<Order.h>
 
 1667053881 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\category.cpp
 	"Category.h"
 
-1667252483 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\main.cpp
+1667399969 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\main.cpp
 	<iostream>
 	<User.h>
 	<Shop.h>
 
-1667078269 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\order.cpp
-	"Order.h"
+1667328424 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\order.cpp
+	"order.h"
 
 1667314169 c:\users\zak\desktop\poo projects\internet_shopping_system\include\order.h
 	<iostream>
 	<list>
 	"Product.h"
 
-1667324134 c:\users\zak\desktop\poo projects\internet_shopping_system\include\product.h
+1667328367 c:\users\zak\desktop\poo projects\internet_shopping_system\include\product.h
 	<string>
 
-1667324134 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\product.cpp
+1667328373 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\product.cpp
 	"Product.h"
 	<string>
 	<iostream>
 	<ctype.h>
+
+1667400041 c:\users\zak\desktop\poo projects\internet_shopping_system\include\utility_functions.h
 

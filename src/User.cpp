@@ -1,7 +1,6 @@
 #include "User.h"
 
 
-
 void User::set_name(string n )
 {
   User_name=n;
@@ -17,8 +16,8 @@ void User::set_password(string pass)
 //constructor
 // to test data in main
 
-User:: User(string username, string region , string street, int home_num,string cardnumber , int d , int m , int y )
-:Home_address(region,street,home_num), card((d,m,y),cardnum)
+User::User(string username, string region , string street, int home_num,string cardnumber , int d , int m , int y )
+:Home_address(region,street,home_num), CreditCard(d,m,y,cardnumber)
 {
     membership=0;
    set_name(username);
@@ -67,7 +66,7 @@ void User:: update_address()
 
      // cheking address's validity
 
-     while(!Is_valid(Home_address.region))
+     while(!Is_valid_name(Home_address.region))
      {
          cout<<"Invalid Region name please try again !"<<endl;
          cout<<"Region :";
@@ -80,7 +79,7 @@ void User:: update_address()
 
      // cheking address's validity
 
-     while(!Is_valid(Home_address.street))
+     while(!Is_valid_name(Home_address.street))
      {
          cout<<"Invalid Region name please try again !"<<endl;
          cout<<"Street : ";
@@ -171,7 +170,7 @@ void User::update_name()
 
      // checking name's validity
 
-     while(!Is_valid(User_name))
+     while(!Is_valid_name(User_name))
      {
          cout<<"Invalid user name please try again !"<<endl;
          cout<<"Name: ";

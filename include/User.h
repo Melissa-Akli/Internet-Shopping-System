@@ -6,10 +6,11 @@ using namespace std;
 
 
 
+//____________________________________UTILITY_FUNCTIONS__________________________________________________________
 
     // utility function to help check the validity of a name
 
-        bool Is_valid(const string & name)
+        bool Is_valid_name(const string & name)
         {
             for(char c: name)
             {
@@ -35,7 +36,7 @@ using namespace std;
         }
 
 
-         bool Invalid_password(string pass)
+         bool Invalid_password(const string pass)
          {
              if(isdigit(pass[0])) return true;
 
@@ -48,13 +49,11 @@ using namespace std;
          }
 
 
-#ifndef USER_H
-#define USER_H
 
-// shop friend of user ????? to access addrequest function....
-class User
-{
+ //_____________________________________________ STRACTURES ______________________________________________________________________
 
+
+        // we define the structure here coz we need them in the implementation ....
 
 // a structure date
   struct date
@@ -75,6 +74,22 @@ class User
   }; // end of date
 
 
+
+
+// a structure card
+        struct Card
+        {
+           date ExpiryDate;
+           string number;
+
+           Card():number("") {}
+           Card( int d, int m, int y , string n):ExpiryDate(d,m, y), number(n) {}
+
+
+        }; // end of card
+
+
+
 // a structure address
   struct address
   {
@@ -86,8 +101,8 @@ class User
 
       address(string r, string s, int h)
       {
-          region=(Is_valid(r))?r :"";
-          street=(Is_valid(s))? s:"";
+          region=(Is_valid_name(r))?r :"";
+          street=(Is_valid_name(s))? s:"";
           home_number=(h>0 )? h : 0;
 
       }
@@ -95,19 +110,15 @@ class User
   };// end of address
 
 
-// a structure card
-        struct Card
-        {
-           date ExpiryDate;
-           string number;
+  //____________________________________________________CLASS USER_______________________________________________________
 
-           Card():number("") {}
-           Card( date d , string n):ExpiryDate(d.day,d.month, d.year), number(n) {}
+#ifndef USER_H
+#define USER_H
 
 
-        }; // end of card
 
-
+class User
+{
 
     public:
 
@@ -143,14 +154,6 @@ class User
         Card CreditCard;
         address Home_address;
         string password;
-
-
-
-
-
-
-
-
 
 
 

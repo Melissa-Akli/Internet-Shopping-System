@@ -113,7 +113,7 @@ void Product::ProductDescription(void)const
 
 
 
-bool Product::operator==(const Product & pro)const
+bool Product::operator==( Product & pro)const
 {
     if(name==pro.name && ID==pro.ID && unitprice==pro.unitprice )
         return true;

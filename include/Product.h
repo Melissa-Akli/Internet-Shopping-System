@@ -26,9 +26,9 @@ class Product
         long int getAvailable_quantity(void)const;
         double getUnitprice(void)const;
         string getProduct_ID(void)const;
-    
-    
-        bool operator== ( const Product & ) const;
+
+
+        bool operator== (  Product & ) const;
 
 
         void ProductDescription(void)const;      //to print the information about the product
