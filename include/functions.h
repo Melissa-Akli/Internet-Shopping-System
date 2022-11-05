@@ -1,10 +1,13 @@
 #include<iostream>
 #include<string>
+#include<unordered_map>
+//#include<User.h> // include nested to deeply because user include functions and function include user !!!!
 using namespace std;
 
 
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
+
 
 bool valid_username(const string &);
 bool Is_valid_name(const string & );
@@ -12,6 +15,8 @@ bool isvalid_Number(const string & );
 bool Invalid_password(const string );
 
 void display_services();
+void do_service(int );
+void add_to_file_map(const unordered_map<string,User> &);
 
  //_____________________________________________ STRUCTURES ______________________________________________________________________
 

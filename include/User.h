@@ -25,9 +25,11 @@ class User
 
         string get_name()const;
         address get_address()const;
+        Card get_card()const;
         date get_ExpiryDate()const;
-        string get_cardID()const;
+        string get_cardID()const;    // do we need them or just need to return card since we have the structure in seperate file
         string get_password()const;
+        double get_membership_count()const;
 
 
         bool checkMembership();

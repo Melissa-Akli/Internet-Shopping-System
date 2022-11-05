@@ -1,4 +1,5 @@
 #include "functions.h"
+#include <fstream>
 
 //____________________________________FUNCTIONS__________________________________________________________
 
@@ -65,3 +66,38 @@
       cout<<"2- Update Profile "<<endl;
       cout<<"3- Add an Order "<<endl;
   }
+
+
+
+// void do_service(int);
+
+void add_to_file_map(const unordered_map<string , User>& mymap)
+{
+    string name;
+    double member;
+    Card Credit;
+    address Home_add;
+    string pass;
+
+
+
+    ofstream os;
+    os.open("mydata.txt");
+
+    for(pair<string,User>it: mymap)
+    {
+        name=(it.second.get_name());
+        member=(it.second.get_membership_count());
+        Credit.number=(it.second.get_card()).number;
+        Credit.ExpiryDate=(it.second.get_card()).ExpiryDate;
+        Home_add=(it.second.get_address());
+        pass=(it.second.get_password());
+
+
+        os<<name<<","<<member<<","<<member<<","<<Credit.number<<",";
+        os<< Credit.ExpiryDate.day<<","<< Credit.ExpiryDate.month<<","<< Credit.ExpiryDate.year<<",";
+        os<<Home_add.region<<","<<Home_add.street<<","<<Home_add.home_number<<",";
+        os<<pass;
+    }
+}
+

@@ -235,5 +235,13 @@ string User::get_password()const
     return password;
 }
 
+Card User::get_card()const
+{
+    return CreditCard;
+}
 
+ double User::get_membership_count()const
+ {
+     return membership;
+ }
 

@@ -7,7 +7,10 @@ using namespace std;
 
 int main()
 {
+
+
     Shop myshop;
+    add_to_file_map(myshop);
 
     int a;
     string name;
@@ -105,6 +108,8 @@ int main()
 
 
           myshop.add_user(name);
+
+
           //  User& user_data=myshop.users_map[name]; if we wanna display profile or access functions
 
            display_services();
