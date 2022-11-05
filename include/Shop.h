@@ -18,9 +18,13 @@ class Shop
         Shop();
         ~Shop();
 
-        void add_user(); // it add the user to both file and hashtable
-        void delete_user(); // before dleting the object user we gotta delete it from the hashtable and file
+        unordered_map <string ,User> users_map;
+        void add_user(User);
+        void add_user(string); // add user to filess
+        void delete_user(string); // before dleting the object user we gotta delete it from the hashtable and file
+
 /*
+
         void AddCatogory(string );
         void deleteCategory();
 
@@ -34,17 +38,12 @@ class Shop
 
 
 
-    void remove_request(); // the online shop will serve the customer : check if it exists then check if memeber , increase total purchase
-    int delivery(); // will use the remove_request function  , calculate distance and return price
-    int bill();// price of delivery +purchase+ , increase total purchase
-    bool pay_bill();// check if the bill is successfully payed
+       void remove_request(); // the online shop will serve the customer : check if it exists then check if memeber , increase total purchase
+       int delivery(); // will use the remove_request function  , calculate distance and return price
+       int bill();// price of delivery +purchase+ , increase total purchase
+       bool pay_bill();// check if the bill is successfully payed
+
 */
-
-    private:
-
-        unordered_map <string ,User> users;
-
-
 };
 
 #endif // SHOP_H

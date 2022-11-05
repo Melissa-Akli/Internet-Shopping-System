@@ -11,6 +11,7 @@ bool Is_valid_name(const string & );
 bool isvalid_Number(const string & );
 bool Invalid_password(const string );
 
+void display_services();
 
  //_____________________________________________ STRUCTURES ______________________________________________________________________
 

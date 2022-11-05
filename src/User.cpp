@@ -15,32 +15,40 @@ User::User(string username,string pass, string region , string street, int home_
 
 
 
-User::User()
+User::User(string name )
 {
-    cout<<" Please Enter Your Information : "<<endl;
-
-     update_name();
+     User_name=name;
      update_address();
      update_creditCard();
      update_password();
 
-
-
 }   // end of default constructor
 
+
+User::User()
+{
+     User_name=" ";
+     membership=0;
+     password=" ";
+
+}   // end of default constructor
 
 
 
 // NEED WORK !!!!!!!!!!!!!!!!
 User::~User()
 {
-    //dtor
+
 }
 
 
 bool User::checkMembership()
 {
-    if(membership>=100000) return true;
+    if(membership>=100000)
+    {
+        return true;
+    }
+
     return false;
 }
 
@@ -88,6 +96,13 @@ void User::update_creditCard()
        cout<<"Enter ID Number : ";
       getline(cin>>ws,CreditCard.number );
 
+      while(!isvalid_Number(CreditCard.number))
+      {
+          cout<<"Invalid ID , try again ! "<<endl;
+          cout<<"ID Number : ";
+          getline(cin>>ws,CreditCard.number );
+      }
+
 
       cout<<"Enter ExpiryDate  : "<<endl;
 
@@ -97,7 +112,7 @@ void User::update_creditCard()
       cout<<"Day :";
       cin>>CreditCard.ExpiryDate.day;
 
-      while(CreditCard.ExpiryDate.day<1 && CreditCard.ExpiryDate.day>31)
+      while(CreditCard.ExpiryDate.day<1 || CreditCard.ExpiryDate.day>31)
       {
           cout<<"Invalid date ! please try again "<<endl;
           cout<<"Day :";
@@ -109,7 +124,7 @@ void User::update_creditCard()
       cout<<"Month :";
       cin>>CreditCard.ExpiryDate.month;
 
-      while(CreditCard.ExpiryDate.month<1 && CreditCard.ExpiryDate.month>12)
+      while(CreditCard.ExpiryDate.month<1 || CreditCard.ExpiryDate.month>12)
       {
           cout<<"Invalid date ! please try again "<<endl;
           cout<<"Month :";
@@ -143,12 +158,21 @@ void User::display_profile()
   cout<<Home_address.region<<endl;
 
 
-  cout<<"Credit Card ID : "<<CreditCard.number;
-  cout<<"\t Expiry date : "<<CreditCard.ExpiryDate.day;
+  cout<<"Credit Card ID : "<<CreditCard.number<<endl;
+  cout<<"Expiry date : "<<CreditCard.ExpiryDate.day;
   cout<<" / "<<CreditCard.ExpiryDate.month;
   cout<<" / "<<CreditCard.ExpiryDate.year<<endl;
-   if(checkMembership()) cout<<"Membership : member "<<endl;
-    else "Membership : Not a member yet !";
+
+   if(checkMembership())
+   {
+       cout<<"Membership : member "<<endl;
+   }
+    else
+    {
+        "Membership : Not a member yet !";
+    }
+
+
 }
 
 void User::update_name()
@@ -206,7 +230,10 @@ string User::get_cardID()const
     return CreditCard.number;
 }
 
-
+string User::get_password()const
+{
+    return password;
+}
 
 
 

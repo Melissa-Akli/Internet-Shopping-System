@@ -7,7 +7,11 @@ using namespace std;
 
 int main()
 {
+    Shop myshop;
+
     int a;
+    string name;
+    string pass;
 
     cout<<" -------------------------- INTERNET SHOPPING SYSTEM -------------------------------"<<endl;
 
@@ -26,7 +30,10 @@ int main()
             }
         }
 
-// case it's a user
+
+
+// case it's a user ___________________________________________________________________________________________
+
     if(a==1)
     {
         cout<<"1-Log_in "<<"\t"<<"2-Register"<<endl;
@@ -41,42 +48,87 @@ int main()
                 cout<<" Enter 1 or 2 : ";
                 cin>>a;
             }
-        }
+          }
+
+    // Case LOG_IN -----------------------------------------------------------------------------------------------
 
          if(a==1)
         {
-             // check  old user if it exist
-             // check if password valid
+
+             cout<<"Enter Name : ";
+             getline(cin>>ws,name);
+
+             auto it=myshop.users_map.find(name);
+
+             if(it!=myshop.users_map.end())
+             {
+                 cout<<"Enter password : ";
+                 getline(cin>>ws,pass);
+
+                     while(it->second.get_password()!=pass)
+                     {
+                         cout<<"Invalid password , try again !"<<endl;
+                         getline(cin>>ws,pass);
+                     }
+
+                 display_services();
+                 cin>>a;
+                 // switch cases ....
+             }
+
+             else
+             {
+                 cout<<"User Name doesn't exist , try again ! "<<endl;
+                 // here we have two choices enter user_name again or register ?????????????
+             }
+
         }
 
+
+    // Case REGISTER -------------------------------------------------------------------------------------------------
 
         else
-        {
-            User NewUser; // add this new_user to the files or list of existing users
-            NewUser.display_profile();
+        { // add this new_user to the files or list of existing users
+
+             cout<<" Please Enter Your Information : "<<endl;
+             cout<<"Name: ";
+             getline(cin>>ws, name );
+
+
+        // checking name's validity
+             while(!valid_username(name))
+             {
+               cout<<"Invalid user name please try again !"<<endl;
+               cout<<"Name: ";
+               getline(cin>>ws, name );
+             }
+
+
+          myshop.add_user(name);
+          //  User& user_data=myshop.users_map[name]; if we wanna display profile or access functions
+
+           display_services();
+                 cin>>a;
+                 // switch cases ....
+
+
         }
 
 
-
-      // display the availble services
-      // display profile
-      // update profile
-      // display purchase historique .....
-
-
-    } //end if user -----------------------------------------------------------------------------------------------
+    } //end if user
 
 
 
 
-// case of a shop
+// case of a shop______________________________________________________________________________________________________
 
     else
     {
             // check if shop exist or not
+            // display services for a shop ......
+            // add category delete product ....
 
-    } // end else shop --------------------------------------------------------------------------------
-
+    } // end else shop
 
 
 return 0;

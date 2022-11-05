@@ -47,7 +47,8 @@
 
          bool Invalid_password(const string pass)
          {
-             if(isdigit(pass[0])) return true;
+              if(pass.empty())return true;
+              if(pass.size()<8)return true;
 
              for(char c: pass)
              {
@@ -57,3 +58,10 @@
              return false;
          }
 
+
+  void display_services()
+  {
+      cout<<"1- Display Profile "<<endl;
+      cout<<"2- Update Profile "<<endl;
+      cout<<"3- Add an Order "<<endl;
+  }

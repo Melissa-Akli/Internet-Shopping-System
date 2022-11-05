@@ -4,6 +4,8 @@
 #include "functions.h"
 using namespace std;
 
+
+// checkmembership doesn't work check whyyy ???????????????
 //____________________________________________________CLASS USER_______________________________________________________
 
 
@@ -17,6 +19,7 @@ class User
     public:
 
         User(string ,string , string, string ,int  ,string , int , int , int );
+        User(string);
         User();
         ~User();
 
@@ -24,6 +27,7 @@ class User
         address get_address()const;
         date get_ExpiryDate()const;
         string get_cardID()const;
+        string get_password()const;
 
 
         bool checkMembership();
@@ -33,7 +37,7 @@ class User
         void update_creditCard();
 
         void display_profile();
-        void display_last_purchase();
+
 
 
 
@@ -42,6 +46,7 @@ class User
         string User_name;
         double membership;
        // vector<order> historic
+       //void display_last_purchase();
 
         Card CreditCard;
         address Home_address;
