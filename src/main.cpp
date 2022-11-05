@@ -3,6 +3,48 @@ using namespace std;
 #include "functions.h"
 #include<User.h>
 #include<Shop.h>
+#include <fstream>
+
+
+
+void add_to_file_map(const unordered_map<string , User>& mymap)
+{
+    string name;
+    double member;
+    Card Credit;
+    address Home_add;
+    string pass;
+
+
+
+    ofstream os;
+    os.open("mydata.txt");
+
+    for(pair<string,User>it: mymap)
+    {
+        name=(it.second.get_name());
+        member=(it.second.get_membership_count());
+        Credit.number=(it.second.get_card()).number;
+        Credit.ExpiryDate=(it.second.get_card()).ExpiryDate;
+        Home_add=(it.second.get_address());
+        pass=(it.second.get_password());
+
+
+        os<<name<<","<<member<<","<<member<<","<<Credit.number<<",";
+        os<< Credit.ExpiryDate.day<<","<< Credit.ExpiryDate.month<<","<< Credit.ExpiryDate.year<<",";
+        os<<Home_add.region<<","<<Home_add.street<<","<<Home_add.home_number<<",";
+        os<<pass;
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 int main()
@@ -10,7 +52,7 @@ int main()
 
 
     Shop myshop;
-    add_to_file_map(myshop);
+    add_to_file_map(myshop.users_map);
 
     int a;
     string name;
