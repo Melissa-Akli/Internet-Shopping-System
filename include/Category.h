@@ -1,10 +1,10 @@
+#include <iostream>
+#include <string>
+#include <Product.h>
+#include <unordered_map>
 
-#include<iostream>
-#include<list>
+
 using namespace std;
-
-
-#include<Product.h>
 
 #ifndef CATEGORY_H
 #define CATEGORY_H
@@ -13,18 +13,24 @@ using namespace std;
 class Category
 {
     public:
+
+        
         Category();
         ~Category();
+        Category(string);
 
-
-
-
-
-
-    private:
         string Category_name;
-        list<Product> Storage;
+        unordered_map <string ,Product> storage_house;
+        
+        
+        void insertproduct(Product);
+        
+        
+        
+        
+        //doesn't have private data 
 
 };
 
 #endif // CATEGORY_H
+

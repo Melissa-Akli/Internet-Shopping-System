@@ -53,6 +53,101 @@ void Shop::add_user (User user)
 
 
 
+void Shop::add_category( string type)
+ {
+
+     vector<Category>::iterator it;
+     
+     // couldn't use the function find because here we're searching for the name of the category only not the category 
+     //itself so i had to use a loop
+     
+     for(it=categories.begin();it!=categories.end();it++)
+     {
+         if(it.Category_name==type)
+            break;
+     }
+     
+
+     if(it != categories.end())
+     {
+         cout<<"This Category does already exist!"<<endl;
+     }
+     else{
+        Category categorie;
+        categorie(type);
+        categories.push_back(categorie);
+     }
+ }
+
+
+
+
+ void Shop::remove_category(string name)
+ {
+     
+      vector<Category>::iterator position;
+
+  
+  for(position=categories.begin();position!=categories.end();position++)
+     {
+         if(position.Category_name==name)
+            break;
+     }
+     
+
+     if(position != categories.end())
+     {
+         categories.erase(position);
+     }
+ }
+
+
+
+
+ void Shop::add_product(Category type, const Product& produit)
+ {
+     vector<Category>::iterator it;
+     for(it:categories)
+     {
+         if(it==type)
+         {
+            it.insertproduct(produit)
+         }
+         else{
+            
+            add_category(type.Category_name);
+            
+         }
+     }
+     
+ }
+
+
+
+void add_request(order& order1)
+    {   
+        priority_queue::push(order1); 
+    }
+
+
+
+    order& remove_request(order& order1) // the online shop will serve the customer : check if it exists then check if memeber , increase total purchase return the total price
+    { 
+        if(!check_request(order1)) 
+        {
+        cout<<" order not found"<<endl;
+        return NULL; 
+        }
+    else {
+        return priority_queue::pop();
+    }
+        
+    }
+    
+
+
+
+
 
 
 

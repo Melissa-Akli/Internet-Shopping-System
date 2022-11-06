@@ -73,7 +73,23 @@ void Product::setProduct_ID(string identifier)
     }
     else{cout<<"The number of digits cannot exceed 191!"<<endl;}
 
+
 }
+
+
+
+
+void Product::add_quantity(long int more )
+{
+   if(more>=0)
+   {
+       available_quantity+=more;
+   }
+}
+
+
+
+
 
 
 
@@ -97,6 +113,12 @@ string Product::getProduct_ID(void)const
 
 
 
+string Product::getProduct_name(void)const
+{
+    return name;
+}
+
+
 
 
 void Product::ProductDescription(void)const
@@ -112,10 +134,15 @@ void Product::ProductDescription(void)const
 
 
 
-
-bool Product::operator==( Product & pro)const
+bool Product::operator==(const Product & pro)const
 {
     if(name==pro.name && ID==pro.ID && unitprice==pro.unitprice )
         return true;
+}
+
+
+bool Product::operator!=(const Product & produit)const
+{
+    return !(this==produit);
 }
 

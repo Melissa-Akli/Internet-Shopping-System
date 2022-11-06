@@ -20,15 +20,18 @@ class Product
         void setAvailable_quantity(long int);   // to unable the shop to insert and update the available quantity
         void setUnit_price(double);   //so that the shop can change the unit price of a product easily
         void setProduct_ID(string);
-
+        void add_quantity(long int);
+        
 
 
         long int getAvailable_quantity(void)const;
         double getUnitprice(void)const;
         string getProduct_ID(void)const;
+        string getProduct_name(void)const;
 
 
-        bool operator== (  Product & ) const;
+        bool operator== ( const Product & ) const;
+        bool operator!=(const Product &)const;
 
 
         void ProductDescription(void)const;      //to print the information about the product
