@@ -124,6 +124,28 @@ void Shop::add_category( string type)
 
 
 
+void add_request(order& order1)
+    {   
+        priority_queue::push(order1); 
+    }
+
+
+
+    order& remove_request(order& order1) // the online shop will serve the customer : check if it exists then check if memeber , increase total purchase return the total price
+    { 
+        if(!check_request(order1)) 
+        {
+        cout<<" order not found"<<endl;
+        return NULL; 
+        }
+    else {
+        return priority_queue::pop();
+    }
+        
+    }
+    
+
+
 
 
 
