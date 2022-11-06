@@ -1,60 +1,63 @@
 #include "order.h"
+#include<iostream>
 
 
 
+using std::list;
 using std::cout;
 using std::endl;
 
-order::order()
+
+order::order(User user)
 {
+    ordered_item=NULL;
+    customer=user;
 
 }
+
+
 order:: ~order()
 {
     ordered_item.clear();
 }
 
 
-/*list<item> order::get_order()const
-{
 
-    return ordered_item;
-} // return the list of item*/
+void order::add_item(int n, Product t) // n: the number of item for product t  
 
-
-void order::add_item(int n, Product t) // n: the number of item for product t
-{
+{    if(check_product(t) && t.available_quantity>=n ){   // checking if the product exist with acceptable ammont before adding it to the order
     item p(n,t);
     ordered_item.push_front(p);
-
+}
 }
 
 
 
-void order::remove_item(int n, Product t)
+void order::remove_item(int n, Product &t)
 {
     item p(n,t);
     ordered_item.remove(p);
+    // decrease the available quantity of product       "  t.available_quantity-=p.quantity;  "
 }
 
 
-// not the final output i will make it better using the tools that we studied last year
-void order:: show_order()
-{
+
+
+void order:: show_order(){// not the final output i will make it better using the tools that we studied last year
     int i=1;
+for(auto itr=ordered_item.begin();itr!=ordered_item.end();itr++){
 
-   for(auto itr=ordered_item.begin() ; itr!=ordered_item.end() ; itr++)
-    {
-        cout<< "Item "<<i<<" : "<< (*itr).p.name<<"\t Quantity"<<(*itr).quantity<<endl;
-    }
+    cout<< " item "<<i<<" : "<< (*itr).Product.name<<"         quantity"<<(*itr).quantity<<endl;
+}
 
 }
-/*bool check_item(item t)// we will check the unordered maps if it contains the element
+
+
+
+
+bool check_item(item t)// we will check the unordered maps if it contains the element
 {
-    // if it exists in the map then i'll return a copy of it  and let it be x
-    if(x.name==t.product.name && x.available_quantity<=t.quantity) return true;
-    return false;
-
-}*/
-
+   return !(ordered_item.find(t)==NULL) 
+    
+}
 
