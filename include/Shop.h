@@ -22,7 +22,26 @@ class Shop
         void add_user(User);
         void add_user(string); // add user to filess
         void delete_user(string); // before dleting the object user we gotta delete it from the hashtable and file
+    
+    
+    
+    
+       vector<Category> categories;
 
+        void add_product(Category, const Product &);
+        void add_product(string );    //add product to files
+        void remove_product(string);
+        void add_category( string );   //function that adds a category to the storage house
+        
+       
+        void remove_category(string );
+
+        bool check_product(string);
+
+    
+    
+    
+    
 /*
 
         void AddCatogory(string );
