@@ -34,7 +34,7 @@ void Shop::add_user(string name)
 
 }
 
-void Shop::add_user(User user)
+void Shop::add_user (User user)
 {
     if(users_map.find(user.get_name())==users_map.end())
        {

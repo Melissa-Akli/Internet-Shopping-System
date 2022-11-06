@@ -7,74 +7,43 @@ using namespace std;
 
 
 
-void add_to_file_map(const unordered_map<string , User>& mymap)
+void add_to_file (Shop myshop)
 {
-    string name;
-    double member;
-    Card Credit;
-    address Home_add;
-    string pass;
+        ofstream file_write_obj;
+       file_write_obj.open("mydata.txt");
+       // by using ios::append it will just add the new user in the end of the file without erasing everything
+
+
+     for(pair<string,User>it: myshop.users_map)
+     {
+
+         file_write_obj.write((char*)&it.second, sizeof(it.second));
+     }
+
+
+        file_write_obj.close();
+}
 
 
 
-    ofstream os;
-    os.open("mydata.txt");     // it will delete everything in the file and add all objects from scratch
 
-    for(pair<string,User>it: mymap)
+void read_from_file( Shop myshop )
+{
+    ifstream file_read_obj;
+    file_read_obj.open("mydata.txt", ios::in);
+
+    while (!file_read_obj.eof())
     {
-        name=(it.second.get_name());
-        member=(it.second.get_membership_count());
-        Credit.number=(it.second.get_card()).number;
-        Credit.ExpiryDate=(it.second.get_card()).ExpiryDate;
-        Home_add=(it.second.get_address());
-        pass=(it.second.get_password());
-
-
-        os<<name<<","<<member<<","<<Credit.number<<",";
-        os<< Credit.ExpiryDate.day<<","<< Credit.ExpiryDate.month<<","<< Credit.ExpiryDate.year<<",";
-        os<<Home_add.region<<","<<Home_add.street<<","<<Home_add.home_number<<",";
-        os<<pass<<endl;    // don't forget endl otherwise it will write everything in one file
+       User obj;
+       file_read_obj.read((char*)&obj, sizeof(obj));
+       myshop.add_user(obj);
     }
-}
 
-
-
-void add_to_file_user(const User & user)
-{
-    string name = user.get_name();
-    double member = user.get_membership_count();
-    Card Credit = user.get_card();
-    address Home_add = user.get_address();
-    string pass = user.get_password();
-
-    ofstream os;
-    os.open("mydata.txt",ios::app);   // by using ios::append it will just add the new user in the end of the file without erasing everything
-
-        os<<name<<","<<member<<","<<Credit.number<<",";
-        os<< Credit.ExpiryDate.day<<","<< Credit.ExpiryDate.month<<","<< Credit.ExpiryDate.year<<",";
-        os<<Home_add.region<<","<<Home_add.street<<","<<Home_add.home_number<<",";
-        os<<pass<<endl;
-
-        os.close();
-}
-
-    /*
-void read_from_file(unordred_map<string,User>& mymap )
-{
-    ifstream is;
-    is.open("mydata.txt");
-
-    User user;
-    string data;
-
-    while(getline())
-
-
-    is.close();
+    file_read_obj.close();
 
 
 }
-*/ // check functions read and write in fstream
+
 //https://www.geeksforgeeks.org/readwrite-class-objects-fromto-file-c/
 
 
@@ -89,7 +58,7 @@ int main()
 
 
     Shop myshop;
-    add_to_file_map(myshop.users_map);
+    read_from_file( myshop );
 
     int a;
     string name;
@@ -187,7 +156,7 @@ int main()
 
 
           myshop.add_user(name);
-          add_to_file_map( myshop.users_map);
+
 
           //  User& user_data=myshop.users_map[name]; if we wanna display profile or access functions
 
@@ -215,6 +184,9 @@ int main()
 
     } // end else shop
 
+
+
+    add_to_file(myshop);
 
 return 0;
 }

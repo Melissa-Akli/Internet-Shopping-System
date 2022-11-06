@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1667669879 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\shop.cpp
+1667765684 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\shop.cpp
 	"Shop.h"
 
-1667608168 c:\users\zak\desktop\poo projects\internet_shopping_system\include\shop.h
+1667765684 c:\users\zak\desktop\poo projects\internet_shopping_system\include\shop.h
 	<iostream>
 	<Category.h>
 	<User.h>
@@ -14,10 +14,10 @@
 	<list>
 	<Product.h>
 
-1667672998 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
+1667675749 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
 	"User.h"
 
-1667669960 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
+1667739135 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
 	<iostream>
 	<Order.h>
 	"functions.h"
