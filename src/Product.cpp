@@ -143,6 +143,6 @@ bool Product::operator==(const Product & pro)const
 
 bool Product::operator!=(const Product & produit)const
 {
-    return !(this==produit);
+    return !(*this==produit);
 }
 

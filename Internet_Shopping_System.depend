@@ -1,49 +1,55 @@
 # depslib dependency file v1.0
-1667765684 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\shop.cpp
+1667773357 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\shop.cpp
 	"Shop.h"
 
-1667765684 c:\users\zak\desktop\poo projects\internet_shopping_system\include\shop.h
+1667774559 c:\users\zak\desktop\poo projects\internet_shopping_system\include\shop.h
 	<iostream>
-	<Category.h>
-	<User.h>
-	<Order.h>
+	"Category.h"
+	"User.h"
 	<unordered_map>
+	<queue>
+	"compare_order.h"
 
-1667128202 c:\users\zak\desktop\poo projects\internet_shopping_system\include\category.h
+1667772885 c:\users\zak\desktop\poo projects\internet_shopping_system\include\category.h
 	<iostream>
-	<list>
-	<Product.h>
+	<string>
+	"Product.h"
+	<unordered_map>
 
 1667675749 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
 	"User.h"
 
-1667739135 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
+1667772956 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
 	<iostream>
-	<Order.h>
 	"functions.h"
 
-1667053881 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\category.cpp
+1667771786 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\category.cpp
 	"Category.h"
 
-1667669879 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\main.cpp
+1667773017 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\main.cpp
 	<iostream>
 	"functions.h"
-	<User.h>
+	"User.h"
 	<Shop.h>
 	<fstream>
 
-1667662641 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\order.cpp
+1667770848 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\order.cpp
 	"order.h"
+	<iostream>
+	<algorithm>
+	"Shop.h"
 
-1667662976 c:\users\zak\desktop\poo projects\internet_shopping_system\include\order.h
+1667773888 c:\users\zak\desktop\poo projects\internet_shopping_system\include\order.h
 	<iostream>
 	<list>
 	"Product.h"
+	"User.h"
+	"Shop.h"
 
-1667328367 c:\users\zak\desktop\poo projects\internet_shopping_system\include\product.h
+1667766772 c:\users\zak\desktop\poo projects\internet_shopping_system\include\product.h
 	<string>
 
-1667328373 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\product.cpp
+1667767664 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\product.cpp
 	"Product.h"
 	<string>
 	<iostream>
@@ -60,7 +66,10 @@
 1667645589 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\functions.cpp
 	"functions.h"
 
-1667672998 c:\users\zak\desktop\poo projects\internet_shopping_system\include\functions.h
+1667772956 c:\users\zak\desktop\poo projects\internet_shopping_system\include\functions.h
 	<iostream>
 	<string>
+
+1667774446 c:\users\zak\desktop\poo projects\internet_shopping_system\include\compare_order.h
+	"order.h"
 

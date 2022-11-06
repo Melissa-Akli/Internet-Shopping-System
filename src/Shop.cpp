@@ -1,4 +1,6 @@
 #include "Shop.h"
+using namespace std;
+
 
 Shop::Shop()
 {
@@ -57,24 +59,23 @@ void Shop::add_category( string type)
  {
 
      vector<Category>::iterator it;
-     
-     // couldn't use the function find because here we're searching for the name of the category only not the category 
+
+     // couldn't use the function find because here we're searching for the name of the category only not the category
      //itself so i had to use a loop
-     
+
      for(it=categories.begin();it!=categories.end();it++)
      {
-         if(it.Category_name==type)
+         if((it->Category_name)==type)
             break;
      }
-     
+
 
      if(it != categories.end())
      {
          cout<<"This Category does already exist!"<<endl;
      }
      else{
-        Category categorie;
-        categorie(type);
+        Category categorie(type);
         categories.push_back(categorie);
      }
  }
@@ -84,16 +85,16 @@ void Shop::add_category( string type)
 
  void Shop::remove_category(string name)
  {
-     
+
       vector<Category>::iterator position;
 
-  
+
   for(position=categories.begin();position!=categories.end();position++)
      {
-         if(position.Category_name==name)
+         if(position->Category_name==name)
             break;
      }
-     
+
 
      if(position != categories.end())
      {
@@ -106,44 +107,61 @@ void Shop::add_category( string type)
 
  void Shop::add_product(Category type, const Product& produit)
  {
-     vector<Category>::iterator it;
-     for(it:categories)
+    //vector<Category>::iterator it;
+     for(auto it:categories)
      {
-         if(it==type)
+         if((it.Category_name)==type.Category_name)
          {
-            it.insertproduct(produit)
+            it.insertproduct(produit);
          }
          else{
-            
+
             add_category(type.Category_name);
-            
+
          }
      }
-     
+
  }
 
 
 
-void add_request(order& order1)
-    {   
-        priority_queue::push(order1); 
+
+
+
+ bool Shop::check_product(string id)
+ {
+   /* vector<Category>::iterator it;*/
+     for(auto it:categories)
+     {
+       if(it.storage_house.find(id)!=it.storage_house.end())
+       {
+          return true;
+       }
+     }
+
+ }
+
+
+void Shop::add_request(order& order1)
+    {
+        commande.push(order1);
     }
 
 
 
-    order& remove_request(order& order1) // the online shop will serve the customer : check if it exists then check if memeber , increase total purchase return the total price
-    { 
-        if(!check_request(order1)) 
+    void Shop::remove_request() // the online shop will serve the customer : check if it exists then check if memeber , increase total purchase return the total price
+    {
+        /*if(!check_request(order1))
         {
         cout<<" order not found"<<endl;
-        return NULL; 
+        return NULL;
         }
-    else {
-        return priority_queue::pop();
+    else {*/
+         commande.pop();
+
+
     }
-        
-    }
-    
+
 
 
 

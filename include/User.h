@@ -1,9 +1,4 @@
 
-#include<iostream>
-#include<Order.h>
-#include "functions.h"
-using namespace std;
-
 
 // checkmembership doesn't work check whyyy ???????????????
 //____________________________________________________CLASS USER_______________________________________________________
@@ -13,8 +8,12 @@ using namespace std;
 #define USER_H
 
 
+#include<iostream>
+
+#include "functions.h"
+using namespace std;
 class User
-{
+{    friend class order;
 
     public:
 

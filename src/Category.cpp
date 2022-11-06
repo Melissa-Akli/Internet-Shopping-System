@@ -27,6 +27,11 @@ void Category::insertproduct(Product produit)
            storage_house.insert({produit.getProduct_ID(), produit});
        }
     else{
-          storage_house.find(produit.getProduct_ID())->second.add_quantity(produit.available_quantity);      // I don't know if it's feasible 
+          storage_house.find(produit.getProduct_ID())->second.add_quantity(produit.getAvailable_quantity());      // I don't know if it's feasible
     }
 }
+
+
+
+
+

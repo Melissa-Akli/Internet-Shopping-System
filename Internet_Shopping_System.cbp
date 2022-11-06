@@ -33,17 +33,13 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Main.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="include/Category.h" />
 		<Unit filename="include/Order.h" />
 		<Unit filename="include/Product.h" />
 		<Unit filename="include/Shop.h" />
 		<Unit filename="include/User.h" />
+		<Unit filename="include/compare_order.h" />
 		<Unit filename="include/functions.h" />
-		<Unit filename="include/structures_and_ functions.h" />
-		<Unit filename="include/utility_functions.h" />
 		<Unit filename="src/Category.cpp" />
 		<Unit filename="src/Order.cpp" />
 		<Unit filename="src/Product.cpp" />
