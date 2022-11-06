@@ -38,6 +38,20 @@ void do_service(int );
          year=(y>2022)? y:2022;
      }
 
+
+     date& operator = (const date& date2)
+     {
+         if(this!=&date2)
+         {
+            day=date2.day;
+            month=date2.month;
+            year=date2.year;
+
+         }
+
+         return *this;
+     }
+
   }; // end of date
 
 
@@ -51,6 +65,17 @@ void do_service(int );
 
            Card():number("") {}
            Card( int d, int m, int y , string n):ExpiryDate(d,m, y), number(n) {}
+
+           Card& operator =(const Card & card2)
+           {
+              if(this!=&card2)
+              {
+                  ExpiryDate=card2.ExpiryDate;
+                  number=card2.number;
+              }
+
+              return *this;
+           }
 
 
         }; // end of card
@@ -72,6 +97,13 @@ void do_service(int );
           street=(Is_valid_name(s))? s:"";
           home_number=(h>0 )? h : 0;
 
+      }
+
+      address& operator = (const address & adrs)
+      {
+          region=adrs.region;
+          street=adrs.street;
+          home_number=adrs.home_number;
       }
 
   };// end of address

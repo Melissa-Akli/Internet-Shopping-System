@@ -27,6 +27,13 @@ public:
             quantity=x>0?x:0;
             }
 
+            bool operator ==(item  item2){
+            return p==item2.p;
+
+            }
+
+
+
         };
 
 

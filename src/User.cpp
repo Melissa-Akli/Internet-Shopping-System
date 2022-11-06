@@ -2,7 +2,6 @@
 
 
 //constructor
-// to test data in main
 
 User::User(string username,string pass, string region , string street, int home_num,string cardnumber , int d , int m , int y )
 :Home_address(region,street,home_num), CreditCard(d,m,y,cardnumber)
@@ -17,6 +16,7 @@ User::User(string username,string pass, string region , string street, int home_
 
 User::User(string name )
 {
+     membership=0;
      User_name=name;
      update_address();
      update_creditCard();
@@ -30,15 +30,14 @@ User::User()
      User_name=" ";
      membership=0;
      password=" ";
-
+     // other informations already initialized in their constructors
 }   // end of default constructor
 
 
 
-// NEED WORK !!!!!!!!!!!!!!!!
 User::~User()
 {
-
+     // what to do ??
 }
 
 
@@ -244,4 +243,27 @@ Card User::get_card()const
  {
      return membership;
  }
+
+
+User& User::operator = (const User& user2)
+{
+    if(this!= &user2)
+    {
+
+        User_name=user2.User_name;
+        membership=user2.membership;
+        CreditCard=user2.CreditCard;
+        Home_address=user2.Home_address;
+        password=user2.password;
+
+    }
+
+    return *this;
+}
+
+
+
+
+
+
 

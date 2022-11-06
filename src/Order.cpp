@@ -34,7 +34,7 @@ void order::add_item(int n, Product t) // n: the number of item for product t
 void order::remove_item(int n, Product t)
 {
     item p(n,t);
-   // ordered_item.remove(p);
+    ordered_item.remove(p);
 }
 
 

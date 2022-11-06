@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1667607344 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\shop.cpp
+1667669879 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\shop.cpp
 	"Shop.h"
 
 1667608168 c:\users\zak\desktop\poo projects\internet_shopping_system\include\shop.h
@@ -14,10 +14,10 @@
 	<list>
 	<Product.h>
 
-1667643327 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
+1667672998 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
 	"User.h"
 
-1667643421 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
+1667669960 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
 	<iostream>
 	<Order.h>
 	"functions.h"
@@ -25,17 +25,17 @@
 1667053881 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\category.cpp
 	"Category.h"
 
-1667646042 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\main.cpp
+1667669879 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\main.cpp
 	<iostream>
 	"functions.h"
 	<User.h>
 	<Shop.h>
 	<fstream>
 
-1667430262 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\order.cpp
+1667662641 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\order.cpp
 	"order.h"
 
-1667314169 c:\users\zak\desktop\poo projects\internet_shopping_system\include\order.h
+1667662976 c:\users\zak\desktop\poo projects\internet_shopping_system\include\order.h
 	<iostream>
 	<list>
 	"Product.h"
@@ -60,7 +60,7 @@
 1667645589 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\functions.cpp
 	"functions.h"
 
-1667645599 c:\users\zak\desktop\poo projects\internet_shopping_system\include\functions.h
+1667672998 c:\users\zak\desktop\poo projects\internet_shopping_system\include\functions.h
 	<iostream>
 	<string>
 

@@ -40,6 +40,8 @@ class User
 
         void display_profile();
 
+        User& operator = (const User&);
+
 
 
 
@@ -47,9 +49,6 @@ class User
 
         string User_name;
         double membership;
-       // vector<order> historic
-       //void display_last_purchase();
-
         Card CreditCard;
         address Home_address;
         string password;

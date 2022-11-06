@@ -18,7 +18,7 @@ void add_to_file_map(const unordered_map<string , User>& mymap)
 
 
     ofstream os;
-    os.open("mydata.txt");
+    os.open("mydata.txt");     // it will delete everything in the file and add all objects from scratch
 
     for(pair<string,User>it: mymap)
     {
@@ -30,18 +30,52 @@ void add_to_file_map(const unordered_map<string , User>& mymap)
         pass=(it.second.get_password());
 
 
-        os<<name<<","<<member<<","<<member<<","<<Credit.number<<",";
+        os<<name<<","<<member<<","<<Credit.number<<",";
         os<< Credit.ExpiryDate.day<<","<< Credit.ExpiryDate.month<<","<< Credit.ExpiryDate.year<<",";
         os<<Home_add.region<<","<<Home_add.street<<","<<Home_add.home_number<<",";
-        os<<pass;
+        os<<pass<<endl;    // don't forget endl otherwise it will write everything in one file
     }
 }
 
 
 
+void add_to_file_user(const User & user)
+{
+    string name = user.get_name();
+    double member = user.get_membership_count();
+    Card Credit = user.get_card();
+    address Home_add = user.get_address();
+    string pass = user.get_password();
+
+    ofstream os;
+    os.open("mydata.txt",ios::app);   // by using ios::append it will just add the new user in the end of the file without erasing everything
+
+        os<<name<<","<<member<<","<<Credit.number<<",";
+        os<< Credit.ExpiryDate.day<<","<< Credit.ExpiryDate.month<<","<< Credit.ExpiryDate.year<<",";
+        os<<Home_add.region<<","<<Home_add.street<<","<<Home_add.home_number<<",";
+        os<<pass<<endl;
+
+        os.close();
+}
+
+    /*
+void read_from_file(unordred_map<string,User>& mymap )
+{
+    ifstream is;
+    is.open("mydata.txt");
+
+    User user;
+    string data;
+
+    while(getline())
 
 
+    is.close();
 
+
+}
+*/ // check functions read and write in fstream
+//https://www.geeksforgeeks.org/readwrite-class-objects-fromto-file-c/
 
 
 
@@ -49,6 +83,9 @@ void add_to_file_map(const unordered_map<string , User>& mymap)
 
 int main()
 {
+
+
+
 
 
     Shop myshop;
@@ -150,13 +187,14 @@ int main()
 
 
           myshop.add_user(name);
-
+          add_to_file_map( myshop.users_map);
 
           //  User& user_data=myshop.users_map[name]; if we wanna display profile or access functions
 
            display_services();
-                 cin>>a;
-                 // switch cases ....
+           cin>>a;
+          // do_service(a);
+
 
 
         }
