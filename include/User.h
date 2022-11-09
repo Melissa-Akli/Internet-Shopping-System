@@ -26,6 +26,7 @@ class User
         address get_address()const;
         Card get_card()const;
         date get_ExpiryDate()const;
+        bool check_validity ();
         string get_cardID()const;    // do we need them or just need to return card since we have the structure in seperate file
         string get_password()const;
         double get_membership_count()const;
@@ -37,6 +38,7 @@ class User
         void update_address();
         void update_creditCard();
 
+        void update_membership(double);
         void display_profile();
 
         User& operator = (const User&);

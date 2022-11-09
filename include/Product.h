@@ -21,7 +21,7 @@ class Product
         void setUnit_price(double);   //so that the shop can change the unit price of a product easily
         void setProduct_ID(string);
         void add_quantity(long int);
-        
+
 
 
         long int getAvailable_quantity(void)const;
@@ -30,8 +30,10 @@ class Product
         string getProduct_name(void)const;
 
 
-        bool operator== ( const Product & ) const;
-        bool operator!=(const Product &)const;
+        bool operator== (  Product  ) const;
+        bool operator!=( Product )const;
+        Product operator =(const Product&);
+
 
 
         void ProductDescription(void)const;      //to print the information about the product

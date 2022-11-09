@@ -9,7 +9,8 @@
 #include"User.h"
 #include<unordered_map>
 #include <queue>
-#include "compare_order.h"
+#include "Order.h"
+
 
 
 
@@ -28,7 +29,7 @@ class Shop
 
     unordered_map <string ,User> users_map;
     vector<Category> categories;
-    priority_queue<order,vector<order>,compare_order > commande; // periority queue  of different requests first in
+    priority_queue<order> commande; // periority queue  of different requests first in
 
 
 
@@ -50,11 +51,19 @@ class Shop
 
         void remove_category(string );
         bool check_product(string);
+        void display_categories(void);
+        void display_products(Category);
 
         void add_request(order& order1);// customer will contact the shop and send them the order
-        void remove_request(); // the online shop will serve the customer : check if it exists then check if memeber
+        order remove_request(); // the online shop will serve the customer : check if it exists then check if memeber
 
-};
+
+       void  bill(order myorder ,double& price);
+        bool check_if_payed(int answer ,order myorder, double total_price  );
+        void delivery();
+
+
+}Myshop;
 
 
 #endif // SHOP_H

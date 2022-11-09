@@ -56,6 +56,14 @@ public:
         void show_order();
 
 
+        // operator to make order comparable ... used in priority queue
+
+        bool operator == (   order  order1 );
+        bool operator != (   order  order1 );
+        bool operator <  (   order  order1 );
+        bool operator >  (   order  order1 );
+
+
 
 
     };

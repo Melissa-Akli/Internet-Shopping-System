@@ -263,7 +263,10 @@ User& User::operator = (const User& user2)
 
 
 
-
+void User::update_membership(double price )
+{
+    membership+=price;
+}
 
 
 

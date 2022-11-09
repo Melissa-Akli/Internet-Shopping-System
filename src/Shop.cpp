@@ -1,4 +1,5 @@
 #include "Shop.h"
+
 using namespace std;
 
 
@@ -149,21 +150,80 @@ void Shop::add_request(order& order1)
 
 
 
-    void Shop::remove_request() // the online shop will serve the customer : check if it exists then check if memeber , increase total purchase return the total price
+    order Shop::remove_request() // the online shop will serve the customer : check if it exists then check if memeber , increase total purchase return the total price
     {
-        /*if(!check_request(order1))
-        {
-        cout<<" order not found"<<endl;
-        return NULL;
-        }
-    else {*/
+        order top= commande.top();
          commande.pop();
 
-
+        return top;
     }
 
 
+void Shop::bill(order myorder ,double& price)
+ {
+        myorder.show_order();
+    double total_price =0;
 
+    for(auto it :myorder.ordered_item)
+    {
+        total_price+=(it.p.getUnitprice())*(it.quantity);
+    }
+
+    cout <<"Order price = "<<total_price<<" DA"<<endl;
+    cout<<"Delivery fees : "<<" 400 DA "<<endl;
+    cout<<"Total price : "<<total_price+400<<endl;
+
+    price = total_price+400;
+
+}
+
+bool Shop::check_if_payed(int answer ,order myorder, double total_price  )
+{
+    if(answer==1)
+    {
+        if (myorder.customer.check_validity())
+        {
+            users_map[myorder.customer.get_name()].update_membership(total_price);
+            for(auto it: myorder.ordered_item){
+
+                for(auto itr:categories)
+                {
+                   auto t=itr.storage_house.find( it.p.getProduct_ID() );
+
+                    if(t !=itr.storage_house.end())
+              {
+                        (t->second).available_quantity-=it.quantity ;
+
+                           }
+                }
+
+            }
+
+        }
+      return true;
+    }
+
+    return false;
+}
+
+
+void Shop:: delivery(){
+
+// melissa can you create a file of drivers and read randomly from it please!!!!!
+
+
+}
+
+
+
+
+void Shop::display_categories(void)
+{
+    for(auto it:categories)
+    {
+        cout<<it.Category_name;
+    }
+}
 
 
 
