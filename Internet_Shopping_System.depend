@@ -16,11 +16,12 @@
 	"Product.h"
 	<unordered_map>
 
-1667913858 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
+1668032538 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
 	"User.h"
 
-1667913839 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
+1668032513 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
 	<iostream>
+	<ctime>
 	"functions.h"
 
 1667771786 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\category.cpp
@@ -67,7 +68,7 @@
 1667645589 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\functions.cpp
 	"functions.h"
 
-1667772956 c:\users\zak\desktop\poo projects\internet_shopping_system\include\functions.h
+1668032703 c:\users\zak\desktop\poo projects\internet_shopping_system\include\functions.h
 	<iostream>
 	<string>
 

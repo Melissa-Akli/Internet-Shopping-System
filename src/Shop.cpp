@@ -181,7 +181,7 @@ bool Shop::check_if_payed(int answer ,order myorder, double total_price  )
 {
     if(answer==1)
     {
-        if (myorder.customer.check_validity())
+        if (myorder.customer.check_CreditCard_validity())
         {
             users_map[myorder.customer.get_name()].update_membership(total_price);
             for(auto it: myorder.ordered_item){
@@ -191,10 +191,10 @@ bool Shop::check_if_payed(int answer ,order myorder, double total_price  )
                    auto t=itr.storage_house.find( it.p.getProduct_ID() );
 
                     if(t !=itr.storage_house.end())
-              {
-                        (t->second).available_quantity-=it.quantity ;
+                  {
+                        (t->second).add_quantity(-(it.quantity));
 
-                           }
+                  }
                 }
 
             }

@@ -9,9 +9,14 @@
 
 
 #include<iostream>
-
+#include<ctime>
 #include "functions.h"
 using namespace std;
+
+
+
+
+
 class User
 {    friend class order;
 
@@ -26,7 +31,9 @@ class User
         address get_address()const;
         Card get_card()const;
         date get_ExpiryDate()const;
-        bool check_validity ();
+        bool check_CreditCard_validity ();  // of expiry date
+
+
         string get_cardID()const;    // do we need them or just need to return card since we have the structure in seperate file
         string get_password()const;
         double get_membership_count()const;

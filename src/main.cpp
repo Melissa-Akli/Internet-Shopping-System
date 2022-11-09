@@ -7,21 +7,39 @@ using namespace std;
 
 
 
+
 void add_to_file (Shop myshop)
 {
         ofstream file_write_obj;
-       file_write_obj.open("mydata.txt");
-       // by using ios::append it will just add the new user in the end of the file without erasing everything
+       file_write_obj.open("user_data.txt", ios::out);
 
 
      for(pair<string,User>it: myshop.users_map)
      {
 
          file_write_obj.write((char*)&it.second, sizeof(it.second));
+
      }
 
-
         file_write_obj.close();
+
+          file_write_obj.open("Product_data.txt",ios::out);
+
+
+          for(auto position: myshop.categories)
+          {
+              for(pair<string,Product>iter:position.storage_house )
+              {
+
+                  file_write_obj.write((char*)&iter.second, sizeof(iter.second));
+
+              }
+
+          }
+
+
+          file_write_obj.close();
+
 }
 
 
@@ -42,9 +60,23 @@ void read_from_file( Shop myshop )
     file_read_obj.close();
 
 
+
+    ifstream file_read_product;
+    file_read_product.open("Product_Data.txt", ios::in);
+
+    while (!file_read_product.eof())
+    {
+       Product produit;
+       file_read_product.read((char*)&produit, sizeof(produit));
+       myshop.add_product(produit.getProduct_ID());
+    }
+
+    file_read_product.close();
+
+
 }
 
-//https://www.geeksforgeeks.org/readwrite-class-objects-fromto-file-c/
+
 
 
 

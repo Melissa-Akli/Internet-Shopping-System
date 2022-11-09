@@ -52,6 +52,16 @@ void do_service(int );
          return *this;
      }
 
+
+     bool operator == (const date& date2)
+     {
+         if(day==date2.day&&month==date2.month&&year==date2.year) return true;
+         return false;
+
+     }
+
+
+
   }; // end of date
 
 

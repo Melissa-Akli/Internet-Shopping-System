@@ -269,4 +269,17 @@ void User::update_membership(double price )
 }
 
 
+bool User::check_CreditCard_validity ()
+{
+    time_t t=time(0);
+
+    tm* now =localtime(&t);
+    date today(now->tm_mday, now->tm_mon+1 ,now->tm_year+1900);
+
+    if(CreditCard.ExpiryDate==today)
+    {
+        return true ;
+    }
+    return false ;
+}
 
