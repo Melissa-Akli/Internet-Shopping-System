@@ -99,19 +99,16 @@ int main()
     cout<<" -------------------------- INTERNET SHOPPING SYSTEM -------------------------------"<<endl;
 
     cout<<"\nAre You : "<<endl;
-    cout <<"1- Costumer "<<"\t"<<"2- Admin"<<endl;
-    cout<<" Enter 1 or 2 : ";
+    cout <<"1- Costumer "<<"\t"<<"2- Seller"<<endl;
     cin>>a;
 
-        if(a!=1 || a!=2)
-        {
            while(a!=1 && a!=2)
             {
                 cout<<"Invalid answer ! please try again "<<endl;
                 cout<<" Enter 1 or 2 : ";
                 cin>>a;
             }
-        }
+
 
 
 
@@ -120,7 +117,6 @@ int main()
     if(a==1)
     {
         cout<<"1-Log_in "<<"\t"<<"2-Register"<<endl;
-        cout<<" Enter 1 or 2 : ";
         cin>>a;
 
         if(a!=1 || a!=2)
@@ -206,7 +202,7 @@ int main()
 
 
 
-// case of a shop______________________________________________________________________________________________________
+// seller ______________________________________________________________________________________________________
 
     else
     {
