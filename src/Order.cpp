@@ -54,6 +54,8 @@ void order:: show_order(){
 
     int i=1;
 
+    cout<<customer.get_name()<<endl;
+
     cout<<setw(4)<<" item "<<setw(5)<<" name "<<setw(5)<<"quantity"<<endl;
 
 for(auto itr=ordered_item.begin();itr!=ordered_item.end();itr++){

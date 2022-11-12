@@ -92,7 +92,7 @@ void User:: update_address()
 
 void User::update_creditCard()
 {
-       cout<<"Enter ID Number : ";
+       cout<<"Enter  credit Cards' ID  Number : ";
       getline(cin>>ws,CreditCard.number );
 
       while(!isvalid_Number(CreditCard.number))

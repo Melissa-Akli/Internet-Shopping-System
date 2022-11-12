@@ -2,7 +2,7 @@
 1667773357 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\shop.cpp
 	"Shop.h"
 
-1668016762 c:\users\zak\desktop\poo projects\internet_shopping_system\include\shop.h
+1668247750 c:\users\zak\desktop\poo projects\internet_shopping_system\include\shop.h
 	<iostream>
 	"Category.h"
 	"User.h"
@@ -10,38 +10,38 @@
 	<queue>
 	"Order.h"
 
-1667772885 c:\users\zak\desktop\poo projects\internet_shopping_system\include\category.h
+1668250076 c:\users\zak\desktop\poo projects\internet_shopping_system\include\category.h
 	<iostream>
 	<string>
 	"Product.h"
 	<unordered_map>
 
-1668032538 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
+1668247770 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
 	"User.h"
 
-1668032513 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
+1668249054 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
 	<iostream>
+	<functions.h>
 	<ctime>
-	"functions.h"
 
-1667771786 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\category.cpp
+1668247750 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\category.cpp
 	"Category.h"
 
-1667773017 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\main.cpp
+1668101312 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\main.cpp
 	<iostream>
 	"functions.h"
 	"User.h"
 	<Shop.h>
 	<fstream>
 
-1668017824 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\order.cpp
+1668247764 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\order.cpp
 	"order.h"
 	<iostream>
 	<algorithm>
 	<iomanip>
 	"Shop.h"
 
-1668017079 c:\users\zak\desktop\poo projects\internet_shopping_system\include\order.h
+1668247750 c:\users\zak\desktop\poo projects\internet_shopping_system\include\order.h
 	<iostream>
 	<list>
 	"Product.h"
@@ -51,7 +51,7 @@
 1668019002 c:\users\zak\desktop\poo projects\internet_shopping_system\include\product.h
 	<string>
 
-1668019048 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\product.cpp
+1668249186 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\product.cpp
 	"Product.h"
 	<string>
 	<iostream>
@@ -65,10 +65,10 @@
 	<iostream>
 	<string>
 
-1667645589 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\functions.cpp
+1668248983 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\functions.cpp
 	"functions.h"
 
-1668032703 c:\users\zak\desktop\poo projects\internet_shopping_system\include\functions.h
+1668249084 c:\users\zak\desktop\poo projects\internet_shopping_system\include\functions.h
 	<iostream>
 	<string>
 

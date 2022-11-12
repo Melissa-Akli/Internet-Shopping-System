@@ -5,6 +5,7 @@
 
 #include<iostream>
 #include<string>
+//#include "Order.h"
 
 using namespace std;
 
@@ -13,8 +14,6 @@ bool Is_valid_name(const string & );
 bool isvalid_Number(const string & );
 bool Invalid_password(const string );
 
-void display_services();
-void do_service(int );
 
 
  //_____________________________________________ STRUCTURES ______________________________________________________________________

@@ -7,9 +7,9 @@ using namespace std;
 
 // inclue chrono to compute time c
 
-Shop myshop;  // global object
 
-void add_to_file ()
+
+void add_to_file (Shop myshop)
 {
         ofstream file_write_obj;
        file_write_obj.open("user_data.txt", ios::out);
@@ -46,7 +46,7 @@ void add_to_file ()
 
 
 
-void read_from_file( )
+void read_from_file( Shop myshop )
 {
     ifstream file_read_obj;
     file_read_obj.open("mydata.txt", ios::in);
@@ -77,164 +77,21 @@ void read_from_file( )
 
 }
 
-//------------------------------------Functions --------------------------------------------------------------------------------
-
-
-void create_an_account(User& customer){
-
-cout<<" Please Enter Your Information : "<<endl;
-
-
-        customer.update_name();
-        customer.update_address();
-        customer.update_creditCard();
-        customer.update_password();
-        myshop.add_user( customer );
-        myshop.add_user(customer.get_name());
-
-
-
-}
-
-
-void display_services(){
-cout<<" How can I help you ?"<<endl;
-   cout<<" 1- See profile . " <<endl;
-   cout<<" 2- Modify profile . " <<endl;
-   cout<<" 3- Explore our products ." <<endl;
-   cout<<" 4- Add to basket . " <<endl;
-   cout<<" 5- Exit . " <<endl;
-
-}
-
-void update_profile(Shop myshop, User& user)
-{ int a ;
-    cout<<" what do you want to modify "<<endl;
-    cout <<" 1- Username  "<<endl;
-    cout <<" 2- Home address "<<endl;
-    cout <<" 3- CreditCard "<<endl;
-    cout <<" 4- password "<<endl;
-   cin>>a;
-   switch(a)
-   {
-    case 1:
-    user.update_name();
-    case 2:
-    user.update_address();
-    case 3:
-    user.update_creditCard();
-    case 4:
-    user.get_password();
-    default:
-        exit(1);
-   }
-
-}
-
-void do_service(int  choice , User& user   )
-{
-
-switch (choice) {
-
-case 1 :  // viewing the profile
-    user.display_profile();
-    break;
-
-case 2 : // modifying the profile
-    update_profile(myshop ,user);
-    break;
-
-case 3 : // exploring the products
-   {
-
-    cout<<" the categories "<<endl;
-    Myshop.display_categories();
-    string category_name;
-    cout<<" please enter the name of the category "<<endl;
-    cin>>category_name;
-    Myshop.display_products(category_name);
-    break;
-
-   }
-
-
-case 4: // adding to basket
- {
-
-      cout<< " your basket "<<endl;
-      order Commande ;
-
- char x;
-
- do{
-
-      cout<<" enter the informations of the product  that you want to buy "<<endl;
-
-      string ID, Category;
-      int num;
-      cout<< " Category " ;
-      cin>> Category;
-      cout<< " the ID " ;
-      cin>> ID;
-      cout<< " the quantity" ;
-      cin>>num;
-
-Product t;
-
-if(myshop.check_product(ID)!=true)
-{
-    cout<<"We are sorry, the product you are searching for is not available §"<<endl;
-}
-
-
-else{
-
- for(auto it:myshop.categories)
-
-     {
-       if(it==Category)
-       {
-
-           t=it.storage_house.find(ID)->second;
-
-       }
-     }
-
-}
-
-Commande.add_item(num, t);
-
- cout<< " want to add another product ?    (y/n)" <<endl;
- cin>>x;
-
- } while (x== 'y') ;
-
-Myshop.add_request(Commande);
-
- break;
 
 
 
 
- }
 
-default : exit(1);
-
-}
-
-
-
-}
-
-
-//----------------------------MAIN-----------------------------------------------------------------------------------------------
 
 int main()
 {
 
 
 
-    read_from_file();
+
+
+    Shop myshop;
+    read_from_file( myshop );
 
     int a;
     string name;
@@ -243,7 +100,7 @@ int main()
     cout<<" -------------------------- INTERNET SHOPPING SYSTEM -------------------------------"<<endl;
 
     cout<<"\nAre You : "<<endl;
-    cout <<"1- Buyer "<<"\t"<<"2-Seller "<<"\t"<<"3- responsable "<<endl;
+    cout <<"1- Buyer "<<"\t"<<"2-Seller "<<<<"\t"<<"3- responsable "<<endl;
 
     cin>>a;
 
@@ -262,7 +119,7 @@ switch (a){
 
 case 1:   // user case
 
- cout<< " Hello user ";
+ cout<< " Hello user "
         cout<<"1- Sign in "<<"\t"<<"2- Sign up"<<endl;
         int b;
         cin>>b;
@@ -281,7 +138,7 @@ case 1:   // user case
 case 1 :   // log in
 
     string name, pw;
-    cout<< "  ----------------------- Welcome to our online shop ----------------------- ";
+    cout<< "  ----------------------- Welcome to our online shop ----------------------- "
     cout << " Please  fill the following information "<<endl;
 
              cout<<" Name : ";
@@ -302,7 +159,7 @@ case 1 :   // log in
 
              }
              else {
-                cout<< " this username does not exist , would you like to create an account (y/n)  ";
+                cout<< " this username does not exist , would you like to create an account (y/n)  "
                 char x;
                 cin>>x;
                 if( x == 'y') create_an_account();
@@ -503,7 +360,7 @@ if(myshop.check_if_payed(confirmation,removed_from_queue,price))
 cout<<" Thank you for your visit "<<endl;
 
 
-    add_to_file();
+    add_to_file(myshop);
 
 return 0;
 }

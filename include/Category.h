@@ -1,4 +1,3 @@
-
 #ifndef CATEGORY_H
 #define CATEGORY_H
 
@@ -19,6 +18,13 @@ class Category
         Category();
         ~Category();
         Category(string);
+        bool operator == ( Category cat2)
+        {
+            if(Category_name==cat2.Category_name && storage_house==cat2.storage_house )
+                return true ;
+
+            return false;
+        }
 
         string Category_name;
         unordered_map <string ,Product> storage_house;
@@ -37,4 +43,3 @@ class Category
 };
 
 #endif // CATEGORY_H
-

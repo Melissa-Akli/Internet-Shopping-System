@@ -60,13 +60,3 @@
          }
 
 
-  void display_services()
-  {
-      cout<<"1- Display Profile "<<endl;
-      cout<<"2- Update Profile "<<endl;
-      cout<<"3- Add an Order "<<endl;
-  }
-
-
-
-// void do_service(int);

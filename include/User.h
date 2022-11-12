@@ -1,6 +1,6 @@
 
 
-// checkmembership doesn't work check whyyy ???????????????
+
 //____________________________________________________CLASS USER_______________________________________________________
 
 
@@ -9,8 +9,9 @@
 
 
 #include<iostream>
+#include<functions.h>
 #include<ctime>
-#include "functions.h"
+
 using namespace std;
 
 

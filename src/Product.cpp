@@ -30,6 +30,9 @@ Product::Product(string prod,string identifier,double price,long int quantity )
 
 
 
+
+
+
 Product::~Product()
 {
      //the destructor
@@ -131,6 +134,9 @@ void Product::ProductDescription(void)const
 
 
 }
+
+//void Product::enter_info_product(void){} ???????????
+
 
 
 
