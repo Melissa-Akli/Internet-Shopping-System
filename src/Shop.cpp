@@ -224,7 +224,41 @@ void Shop::display_categories(void)
         cout<<it.Category_name;
     }
 }
+ 
 
+
+void Shop::remove_product(string produit_ID)
+ {
+    
+    for(auto it:categories)
+     {
+       if(it.storage_house.find(id)!=it.storage_house.end())
+       {
+         it.storage_house.erase(produit_ID);
+       }
+       else{
+        
+        cout<<"it doesn't even exist "<<endl;
+       }
+     }
+     
+ }
+
+ 
+ 
+ 
+ 
+ 
+ void Shop::display_products(Category type)
+{
+    for(auto it:type.storage_house)
+        
+    {
+       it.second.ProductDescription();
+        
+    }   
+    
+}
 
 
 
