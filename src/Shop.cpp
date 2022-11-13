@@ -192,7 +192,7 @@ bool Shop::check_if_payed(int answer ,order myorder, double total_price  )
 
                     if(t !=itr.storage_house.end())
                   {
-                        (t->second).add_quantity(-(it.quantity));
+                        (t->second).reduce_quantity(-(it.quantity));
 
                   }
                 }
