@@ -207,10 +207,12 @@ bool Shop::check_if_payed(int answer ,order myorder, double total_price  )
 }
 
 
-void Shop:: delivery(){
-
-// melissa can you create a file of drivers and read randomly from it please!!!!!
-
+void Shop:: delivery( order x){
+    
+cout<< " your order " <<endl;
+x.show_order() ;
+cout<<" Has been accomplished successfully , to be delivered to  " <<x.customer.get_address().home_number<<" - "<<x.customer.get_address().street<<" - "<<x.customer.get_address().region<<endl;
+cout<<" in these 3 coming days "<<endl;
 
 }
 
