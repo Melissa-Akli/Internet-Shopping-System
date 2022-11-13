@@ -31,6 +31,12 @@ public:
             item(int x, Product y):p(y){
             quantity=x>0?x:0;
             }
+            
+             item operator = (const item & it)
+            {
+                quantity= it.quentity;
+                p=it.p;
+            }
 
             bool operator ==(item  item2){
             return p==item2.p;
@@ -49,6 +55,14 @@ public:
         order(User);
         order();
         ~order();
+     
+     order operator =(const order& ORDER)
+        {
+           ordered_item.copy(ORDER.ordered_item.begin(),ORDER.ordered_item.end(),ordered_item.begin());
+
+              customer=ORDER.customer;
+        }
+     
 
         void add_item(int n, Product t);  // check the product if it is available before adding it into the order
         void remove_item(int n, Product& t);
