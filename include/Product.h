@@ -21,6 +21,7 @@ class Product
         void setUnit_price(double);   //so that the shop can change the unit price of a product easily
         void setProduct_ID(string);
         void add_quantity(long int);
+        void reduce_quantity(long int );
 
 
 
@@ -32,6 +33,8 @@ class Product
 
         bool operator== (  Product  ) const;
         bool operator!=( Product )const;
+        bool operator < (const Product & )const;
+        bool operator > ( const Product & )const;
         Product operator =(const Product&);
 
 
