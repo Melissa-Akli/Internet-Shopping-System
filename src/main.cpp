@@ -80,19 +80,27 @@ void read_from_file( )
 //------------------------------------Functions --------------------------------------------------------------------------------
 
 
-void create_an_account(User& customer){
+User& create_an_account(){
 
-cout<<" Please Enter Your Information : "<<endl;
+string name;
 
-
-        customer.update_name();
-        customer.update_address();
-        customer.update_creditCard();
-        customer.update_password();
-        myshop.add_user( customer );
-        myshop.add_user(customer.get_name());
+             cout<<"Enter Your Information : "<<endl;
+             cout<<"Name: ";
+             getline(cin>>ws, name );
 
 
+        // checking name's validity
+             while(!valid_username(name))
+             {
+               cout<<"Invalid user name, try again !"<<endl;
+               cout<<"Name: ";
+               getline(cin>>ws, name );
+             }
+
+
+          myshop.add_user(name);
+
+ return myshop.users_map[name];
 
 }
 
@@ -237,8 +245,6 @@ int main()
     read_from_file();
 
     int a;
-    string name;
-    string pass;
 
     cout<<" -------------------------- INTERNET SHOPPING SYSTEM -------------------------------"<<endl;
 
@@ -280,7 +286,10 @@ case 1:   // user case
 {
 case 1 :   // log in
 
-    string name, pw;
+  {
+        string name, pw ;
+    bool account_changed=false;
+
     cout<< "  ----------------------- Welcome to our online shop ----------------------- ";
     cout << " Please  fill the following information "<<endl;
 
@@ -288,56 +297,99 @@ case 1 :   // log in
              getline(cin>>ws,name);
 
              auto it = myshop.users_map.find(name);
+             User& customer =it->second;
 
-             if(it!=myshop.users_map.end())
+             while(it==myshop.users_map.end())
              {
-                 cout<<" Enter password : ";
-                 getline(cin>>ws,pass);
 
-                while(it->second.get_password()!=pass)
+                cout<< " This user name already exists "<<endl;
+                cout<<"1- Create an account \t  2- Try again"<<endl;
+
+
+                int reponse;
+                cin>>reponse;
+
+                  while(reponse!=1 || reponse!=2 ){
+
+                        cout<< " invalid answer , please try again . ";
+                         cin>>reponse;
+                  }
+
+
+                if( reponse == 1)
+                {
+                    customer= create_an_account();
+                    account_changed=true;
+                    break;
+                }
+
+
+                else
+                {
+
+                  cout<<" Name : ";
+                  getline(cin>>ws,name);
+
+                  it = myshop.users_map.find(name);
+                  customer =it->second;
+
+                }
+
+
+              } // if user-name already exist
+
+
+
+             if(!account_changed)
+             {
+                cout<<" Enter password : ";
+                getline(cin>>ws,pw);
+
+
+                while(it->second.get_password()!=pw)
                      {
                          cout<<"Invalid password , try again !"<<endl;
-                         getline(cin>>ws,pass);
+                         getline(cin>>ws,pw);
                      }
-
              }
-             else {
-                cout<< " this username does not exist , would you like to create an account (y/n)  ";
-                char x;
-                cin>>x;
-                if( x == 'y') create_an_account();
-                else break;
-    }
+
+
+int reply;
+char x;
 
 do {
       display_services();
-      int replay;
-      cin>>replay;
-      do_service(replay);
+
+      cin>>reply;
+      do_service(reply,customer);
       cout<< " return to the services   y/n " <<endl;
-      char x;
       cin>>x;
 
-}while(x=='y')
+}while(x=='y');
 
 break;
 
+  } // case 1
+
+
 
 case 2 :  // register
-    cout<< "  ----------------------- Welcome to our online shop ----------------------- "
-     User customer;
-  create_an_account(customer);
-cout<< " Hello " <<customer.name;
+    cout<< "  ----------------------- Welcome to our online shop ----------------------- "<<endl;
+
+  User& customer=create_an_account();
+
+cout<< " Hello " <<customer.get_name();
+
+ char x;
+ int replay;
 
   do {
       display_services();
-      int replay;
-      do_service(replay);
+      do_service(replay,customer);
       cout<< " return to the services   y/n " <<endl;
-      char x;
       cin>>x;
 
-}while(x=='y')
+}while(x=='y');
 
 }
 
@@ -346,8 +398,10 @@ cout<< " Hello " <<customer.name;
 
 
 
-case 2:      // seller case
-    int answer;
+case 2:  // seller case
+ {
+
+  int answer;
 
 do {
    cout<<" Welcome to seller services ,how can I help you ?"<<endl;
@@ -361,17 +415,26 @@ do {
         switch(answer){
 
 case 1 :
+{
    cout<<" ____________________the existing categories____________________ "<<endl;
    int i=0;
    for( auto it : myshop.categories)
+
     {
      cout<<i<<"- "<<it.Category_name << endl;
      i++;
-   }
+
+    }
+
+    break;
+}
 
 case 2 :
+{
     cout<< " ____________________Adding a   new product____________________ " <<endl;
-    cout<< "the available categories"
+
+    cout<< "the available categories :"<<endl;
+
     int i=0;
    for( auto it : myshop.categories)
     {
@@ -402,16 +465,25 @@ case 2 :
 
    Product produit( Name , id , price , quantity );
    myshop.add_product(category,produit);
+   break;
 
+}
 
 
 case 3 :
+{
     cout<< " ____________________Removing a product____________________ " <<endl;
     cout<< " Enter the name of the product :  ";
     string product;
     cin>>product;
      myshop.remove_product(product);
      // you wonder if he does npt know the name of the product what can he do !!! logically he knows the name since he is the seller
+     //otherwise we can display the products that he already added and separate files ......
+
+     // we assume that the seller removing his own products
+     // otherwise we'll be obliged to separate the list of products of each seller and check for each operation
+     break;
+}
 
 
 case 4:
@@ -420,13 +492,14 @@ case 4:
 default :
     cout<<"Invalid answer ! please try again "<<endl;
     cin>>answer;
+
 }
 
-} while (answer)
+} while (answer);
 
+break;
 
-
-
+ }
 
 case 3: // a responsable  of the online  shop
 
@@ -440,31 +513,43 @@ case 3: // a responsable  of the online  shop
    cin>>answer;
 
    switch(answer){
-case 1 :
 
+case 1 :
+{
    cout<<" ____________________the existing categories____________________ "<<endl;
    int i=0;
+
    for( auto it : myshop.categories)
     {
      cout<<i<<"- "<<it.Category_name << endl;
      i++;
-   }
+    }
+
+   break;
+}
+
 
 case 2 :
+{
     cout<< " ____________________Adding a new category____________________ " <<endl;
      cout<< " Name " ;
      string category;
      cin>>category;
      myshop.add_category(category) ;
+     break;
+}
 
 
 case 3 :
+{
     cout<< " ____________________Removing a category____________________ " <<endl;
     cout<< " Enter the name of the category :  ";
     string category;
     cin>>category;
      myshop.remove_category(category) ;
+     break;
 
+}
 
 case 4 :
 exit(1);

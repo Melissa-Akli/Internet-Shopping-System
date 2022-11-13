@@ -60,7 +60,7 @@ class Shop
 
        void  bill(order myorder ,double& price);
         bool check_if_payed(int answer ,order myorder, double total_price  );
-        void delivery();
+        void delivery(order x);
 
 
 }Myshop;

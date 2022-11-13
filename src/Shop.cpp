@@ -14,6 +14,7 @@ Shop::~Shop()
 }
 
 
+// add a new user
 void Shop::add_user(string name)
 {
     // BECAUSE FIND RETURNS AN ITERATOR TO THE value if it exist if not it'll return an eterator to the end
@@ -37,6 +38,8 @@ void Shop::add_user(string name)
 
 }
 
+
+// add an existing user
 void Shop::add_user (User user)
 {
     if(users_map.find(user.get_name())==users_map.end())
@@ -207,10 +210,11 @@ bool Shop::check_if_payed(int answer ,order myorder, double total_price  )
 }
 
 
-void Shop:: delivery(){
-
-// melissa can you create a file of drivers and read randomly from it please!!!!!
-
+void Shop:: delivery( order x){
+cout<< " your order " <<endl;
+x.show_order() ;
+cout<<" Has been accomplished successfully , to be delivered to  " <<x.customer.get_address().home_number<<" - "<<x.customer.get_address().street<<" - "<<x.customer.get_address().region<<endl;
+cout<<" in these 3 coming days "<<endl;
 
 }
 
@@ -224,6 +228,7 @@ void Shop::display_categories(void)
         cout<<it.Category_name;
     }
 }
+
 
 
 
