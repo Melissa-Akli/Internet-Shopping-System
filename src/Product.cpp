@@ -82,6 +82,8 @@ void Product::setProduct_ID(string identifier)
 
 
 
+
+
 void Product::add_quantity(long int more )
 {
    if(more>=0)
@@ -89,6 +91,20 @@ void Product::add_quantity(long int more )
        available_quantity+=more;
    }
 }
+
+
+
+
+
+
+void Product::reduce_quantity(long int quantity)
+{
+   if(quantity>=0)
+   {
+       available_quantity-=quantity;
+   }
+}
+
 
 
 
@@ -103,16 +119,24 @@ long int Product::getAvailable_quantity(void)const
 
 
 
+
+
+
 double Product::getUnitprice(void)const
 {
   return unitprice;
 }
 
 
+
+
+
 string Product::getProduct_ID(void)const
 {
     return ID;
 }
+
+
 
 
 
@@ -150,6 +174,27 @@ bool Product::operator==( Product  pro)const
 bool Product::operator!=( Product  produit)const
 {
     return !(*this==produit);
+}
+
+
+
+
+bool Product::operator<(const Product & produit) const
+{
+    if(ID<produit.ID)
+        return true;
+
+        else
+        return false;
+}
+
+
+
+
+
+bool Product::operator>(const Product & produit) const
+{
+    return !((*this)>produit);
 }
 
 

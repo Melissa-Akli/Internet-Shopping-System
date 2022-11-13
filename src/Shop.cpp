@@ -195,7 +195,7 @@ bool Shop::check_if_payed(int answer ,order myorder, double total_price  )
 
                     if(t !=itr.storage_house.end())
                   {
-                        (t->second).add_quantity(-(it.quantity));
+                        (t->second).reduce_quantity(-(it.quantity));
 
                   }
                 }
@@ -211,6 +211,10 @@ bool Shop::check_if_payed(int answer ,order myorder, double total_price  )
 
 
 void Shop:: delivery( order x){
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 6c367d8d34769ec92e406e47564b1339a6f3fb25
 cout<< " your order " <<endl;
 x.show_order() ;
 cout<<" Has been accomplished successfully , to be delivered to  " <<x.customer.get_address().home_number<<" - "<<x.customer.get_address().street<<" - "<<x.customer.get_address().region<<endl;
@@ -228,7 +232,41 @@ void Shop::display_categories(void)
         cout<<it.Category_name;
     }
 }
+ 
 
+
+void Shop::remove_product(string produit_ID)
+ {
+    
+    for(auto it:categories)
+     {
+       if(it.storage_house.find(id)!=it.storage_house.end())
+       {
+         it.storage_house.erase(produit_ID);
+       }
+       else{
+        
+        cout<<"it doesn't even exist "<<endl;
+       }
+     }
+     
+ }
+
+ 
+ 
+ 
+ 
+ 
+ void Shop::display_products(Category type)
+{
+    for(auto it:type.storage_house)
+        
+    {
+       it.second.ProductDescription();
+        
+    }   
+    
+}
 
 
 
