@@ -12,15 +12,16 @@ using std::string;
 
 
 Product::Product()
-:name(""),ID(0000),unitprice(0.0),available_quantity(0)
+:name(""),category_name(""),ID("00000000"),unitprice(0.0),available_quantity(0)
 {
     //the default constructor
 }
 
 
-Product::Product(string prod,string identifier,double price,long int quantity )
+Product::Product(string prod,string categorie,string identifier,double price,long int quantity )
 {
     name=prod;
+    category_name=categorie;
     setProduct_ID(identifier);
     setUnit_price(price);
     setAvailable_quantity(quantity);
@@ -166,7 +167,7 @@ void Product::ProductDescription(void)const
 
 bool Product::operator==( Product  pro)const
 {
-    if(name==pro.name && ID==pro.ID && unitprice==pro.unitprice )
+    if(name==pro.name && ID==pro.ID && unitprice==pro.unitprice && category_name==pro.category_name )
         return true;
 }
 
@@ -205,6 +206,7 @@ Product Product::operator=(const Product& produit)
          ID=produit.ID;
          unitprice=produit.unitprice;
          available_quantity=produit.available_quantity;
+         category_name=produit.category_name;
 
 
          return (*this);

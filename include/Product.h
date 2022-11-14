@@ -11,9 +11,13 @@ class Product
 
 
         friend class order;
+        friend void add_to_order(int n, Product t,order& ORDER);
+
+
+        string category_name;
 
         Product();    //the default constructor
-        Product(string,string,double,long int);   //the parameterized constructor
+        Product(string,string,string,double,long int);   //the parameterized constructor
         ~Product();   //the destructor
 
 

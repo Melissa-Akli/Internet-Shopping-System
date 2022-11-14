@@ -2,7 +2,7 @@
 #include<iostream>
 #include <algorithm>
 #include <iomanip>
-#include "Shop.h"
+
 
 using namespace std;
 /*using std::list;
@@ -32,10 +32,13 @@ order:: ~order()
 
 void order::add_item(int n, Product t) // n: the number of item for product t
 
-{    if(Myshop.check_product(t.ID) && t.available_quantity>=n ){   // checking if the product exist with acceptable ammont before adding it to the order
+{
+       if(t.available_quantity>=n ){   // checking if the product exist with acceptable amount before adding it to the order
     item p(n,t);
     ordered_item.push_front(p);
-}
+
+ }
+
 }
 
 
@@ -75,25 +78,26 @@ bool order::check_item(item t)// we will check the unordered maps if it contains
 }
 
 
-bool order::operator == (  order  order1 )
+bool order::operator == (   const order&  order1 )const
+
 {
-    return order1.customer.checkMembership() && (*this).customer.checkMembership();
+    return  this ->customer.checkMembership() && order1.customer.checkMembership() ;
 }
 
-bool order::operator != (   order  order1 )
+bool order::operator != (   const order&  order1 )const
 {
     return ! (*this==order1);
 }
 
 
-bool order::operator <  (   order  order1 )
+bool order::operator <  (    const order&  order1 )const
 {
-    return !((*this).customer.checkMembership()) && order1.customer.checkMembership();
+    return !(this->customer.checkMembership()) && order1.customer.checkMembership();
 }
 
-bool order::operator >  (   order  order1 )
+bool order::operator >  (   const order&  order1 )const
 {
-    return (*this).customer.checkMembership() && !(order1.customer.checkMembership());
+    return this->customer.checkMembership() && !(order1.customer.checkMembership());
 }
 
 

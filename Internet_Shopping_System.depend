@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1667773357 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\shop.cpp
+1668466655 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\shop.cpp
 	"Shop.h"
 
-1668380142 c:\users\zak\desktop\poo projects\internet_shopping_system\include\shop.h
+1668462912 c:\users\zak\desktop\poo projects\internet_shopping_system\include\shop.h
 	<iostream>
 	"Category.h"
 	"User.h"
@@ -16,42 +16,41 @@
 	"Product.h"
 	<unordered_map>
 
-1668247770 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
+1668460787 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
 	"User.h"
 
-1668249054 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
+1668463215 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
 	<iostream>
 	<functions.h>
+	<string>
 	<ctime>
 
 1668247750 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\category.cpp
 	"Category.h"
 
-1668378441 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\main.cpp
+1668466890 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\main.cpp
 	<iostream>
 	"functions.h"
 	"User.h"
-	<Shop.h>
+	"Shop.h"
 	<fstream>
 
-1668247764 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\order.cpp
+1668463697 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\order.cpp
 	"order.h"
 	<iostream>
 	<algorithm>
 	<iomanip>
-	"Shop.h"
 
-1668380581 c:\users\zak\desktop\poo projects\internet_shopping_system\include\order.h
+1668461354 c:\users\zak\desktop\poo projects\internet_shopping_system\include\order.h
 	<iostream>
 	<list>
 	"Product.h"
 	"User.h"
-	"Shop.h"
 
-1668380581 c:\users\zak\desktop\poo projects\internet_shopping_system\include\product.h
+1668466655 c:\users\zak\desktop\poo projects\internet_shopping_system\include\product.h
 	<string>
 
-1668249186 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\product.cpp
+1668466663 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\product.cpp
 	"Product.h"
 	<string>
 	<iostream>

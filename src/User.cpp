@@ -41,7 +41,7 @@ User::~User()
 }
 
 
-bool User::checkMembership()
+bool User::checkMembership()const
 {
     if(membership>=100000)
     {

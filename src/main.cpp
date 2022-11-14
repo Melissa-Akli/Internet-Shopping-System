@@ -2,7 +2,8 @@
 using namespace std;
 #include "functions.h"
 #include"User.h"
-#include<Shop.h>
+#include "Shop.h"
+
 #include <fstream>
 
 // inclue chrono to compute time c
@@ -24,7 +25,8 @@ void add_to_file ()
 
         file_write_obj.close();
 
-          file_write_obj.open("Product_data.txt",ios::out);
+
+    file_write_obj.open("Product_data.txt",ios::out);
 
 
           for(auto position: myshop.categories)
@@ -69,7 +71,7 @@ void read_from_file( )
     {
        Product produit;
        file_read_product.read((char*)&produit, sizeof(produit));
-       myshop.add_product(produit.getProduct_ID());
+       myshop.add_product(produit);
     }
 
     file_read_product.close();
@@ -78,6 +80,13 @@ void read_from_file( )
 }
 
 //------------------------------------Functions --------------------------------------------------------------------------------
+
+void add_to_order(int n, Product t,order& ORDER)
+{
+   if(myshop.check_product(t.ID))
+    ORDER.add_item(n,t);
+
+}
 
 
 User& create_an_account(){
@@ -156,11 +165,11 @@ case 3 : // exploring the products
    {
 
     cout<<" the categories "<<endl;
-    Myshop.display_categories();
+    myshop.display_categories();
     string category_name;
     cout<<" please enter the name of the category "<<endl;
     cin>>category_name;
-    Myshop.display_products(category_name);
+    myshop.display_products(category_name);
     break;
 
    }
@@ -173,13 +182,11 @@ case 4: // adding to basket
       order Commande ;
 
  char x;
-
+ string ID, Category;
+      int num;
  do{
 
       cout<<" enter the informations of the product  that you want to buy "<<endl;
-
-      string ID, Category;
-      int num;
       cout<< " Category " ;
       cin>> Category;
       cout<< " the ID " ;
@@ -188,6 +195,7 @@ case 4: // adding to basket
       cin>>num;
 
 Product t;
+
 
 if(myshop.check_product(ID)!=true)
 {
@@ -210,14 +218,15 @@ else{
 
 }
 
-Commande.add_item(num, t);
+add_to_order(num,t,Commande);
+
 
  cout<< " want to add another product ?    (y/n)" <<endl;
  cin>>x;
 
  } while (x== 'y') ;
 
-Myshop.add_request(Commande);
+myshop.add_request(Commande);
 
  break;
 
@@ -242,7 +251,7 @@ int main()
 
 
 
-    read_from_file();
+    //read_from_file();
 
     int a;
 
@@ -460,10 +469,10 @@ case 2 :
    cin>> id;
    cout<< "  The unit price : ";
    cin>> price;
-   cout<< " The guantity : ";
+   cout<< " The quantity : ";
    cin>> quantity;
 
-   Product produit( Name , id , price , quantity );
+   Product produit( Name ,category, id , price , quantity );
    myshop.add_product(category,produit);
    break;
 
@@ -561,7 +570,7 @@ default :
 
 
  }
-while ( answer != 3);
+while ( answer != 4);
 
 }
 
@@ -571,7 +580,7 @@ while ( answer != 3);
 
 order removed_from_queue;
 double price=0;
-removed_from_queue=Myshop.remove_request();
+removed_from_queue=myshop.remove_request();
 myshop.bill(removed_from_queue , price );
 
 
@@ -583,7 +592,7 @@ cin>>confirmation;
 
 if(myshop.check_if_payed(confirmation,removed_from_queue,price))
     {
-    myshop.delivery(); //?????????????????????????????????????????????????
+    myshop.delivery(removed_from_queue);
 
 }
 

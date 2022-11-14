@@ -10,6 +10,7 @@
 
 #include<iostream>
 #include<functions.h>
+#include<string>
 #include<ctime>
 
 using namespace std;
@@ -40,7 +41,7 @@ class User
         double get_membership_count()const;
 
 
-        bool checkMembership();
+        bool checkMembership()const;
         void update_name();
         void update_password();
         void update_address();

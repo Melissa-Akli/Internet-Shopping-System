@@ -7,7 +7,7 @@
 #include <list>
 #include "Product.h"
 #include "User.h"
-#include "Shop.h"
+
 
 
 using std::list;
@@ -31,10 +31,10 @@ public:
             item(int x, Product y):p(y){
             quantity=x>0?x:0;
             }
-            
+
              item operator = (const item & it)
             {
-                quantity= it.quentity;
+                quantity= it.quantity;
                 p=it.p;
             }
 
@@ -55,14 +55,15 @@ public:
         order(User);
         order();
         ~order();
-     
-     order operator =(const order& ORDER)
+
+     list<item> operator =(const order& ORDER)
         {
-           ordered_item.copy(ORDER.ordered_item.begin(),ORDER.ordered_item.end(),ordered_item.begin());
+
+            ordered_item= ORDER.ordered_item;
 
               customer=ORDER.customer;
         }
-     
+
 
         void add_item(int n, Product t);  // check the product if it is available before adding it into the order
         void remove_item(int n, Product& t);
@@ -70,12 +71,13 @@ public:
         void show_order();
 
 
+
         // operator to make order comparable ... used in priority queue
 
-        bool operator == (   order  order1 );
-        bool operator != (   order  order1 );
-        bool operator <  (   order  order1 );
-        bool operator >  (   order  order1 );
+        bool operator == (   const order&  order1 )const;
+        bool operator != (   const order&  order1 )const;
+        bool operator <  (   const order&  order1 )const;
+        bool operator >  (   const order&  order1 )const;
 
 
 

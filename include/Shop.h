@@ -27,6 +27,8 @@ class Shop
     public:
 
 
+
+
     unordered_map <string ,User> users_map;
     vector<Category> categories;
     priority_queue<order> commande; // periority queue  of different requests first in
@@ -45,7 +47,7 @@ class Shop
 
 
         void add_product(Category, const Product &);
-        void add_product(string );    //add product to files
+        void add_product(Product );    //add product to files
         void remove_product(string);
         void add_category( string );   //function that adds a category to the storage house
 
@@ -63,7 +65,7 @@ class Shop
         void delivery(order x);
 
 
-}Myshop;
+};
 
 
 #endif // SHOP_H
