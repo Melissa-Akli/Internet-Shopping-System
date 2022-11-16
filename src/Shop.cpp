@@ -277,6 +277,13 @@ void Shop::remove_product(string produit_ID)
 
  void Shop::display_products(Category type)
 {
+
+    if(type.storage_house.empty())
+    {
+        cout<<" This category is empty"<<endl;
+        return;
+    }
+
     for(auto it:type.storage_house)
 
     {

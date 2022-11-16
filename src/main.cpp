@@ -12,7 +12,7 @@ Shop myshop;  // global object
 
 void add_to_file ()
 {
-        ofstream file_write_obj;
+       ofstream file_write_obj;
        file_write_obj.open("user_data.txt", ios::out);
 
 
@@ -26,6 +26,16 @@ void add_to_file ()
         file_write_obj.close();
 
 
+    file_write_obj.open("Categorie_data.txt",ios::out);
+
+     for(int i=0; i<myshop.categories.size(); i++)
+     {
+        file_write_obj.write((char*)&(myshop.categories[i].Category_name), sizeof(myshop.categories[i].Category_name));
+     }
+
+    file_write_obj.close();
+
+
     file_write_obj.open("Product_data.txt",ios::out);
 
 
@@ -37,7 +47,6 @@ void add_to_file ()
                   file_write_obj.write((char*)&iter.second, sizeof(iter.second));
 
               }
-
           }
 
 
@@ -51,7 +60,9 @@ void add_to_file ()
 void read_from_file( )
 {
     ifstream file_read_obj;
-    file_read_obj.open("mydata.txt", ios::in);
+
+    // to add users to users_file
+    file_read_obj.open("user_data.txt", ios::in);
 
     while (!file_read_obj.eof())
     {
@@ -63,7 +74,20 @@ void read_from_file( )
     file_read_obj.close();
 
 
+      // to add categories to category_file
+    file_read_obj.open("Categorie_data.txt",ios::in);
 
+         while (!file_read_obj.eof())
+         {
+               string cat_name;
+               file_read_obj.read((char*)&(cat_name), sizeof(cat_name));
+               myshop.add_category(cat_name);
+         }
+
+    file_read_obj.close();
+
+
+     // to add products to product_file
     ifstream file_read_product;
     file_read_product.open("Product_Data.txt", ios::in);
 
@@ -75,7 +99,6 @@ void read_from_file( )
     }
 
     file_read_product.close();
-
 
 }
 
@@ -89,13 +112,13 @@ void add_to_order(int n, Product t,order& ORDER)
 }
 
 
-User& create_an_account(){
+User* create_an_account(){
 
 string name;
 
-             cout<<"Enter Your Information : "<<endl;
-             cout<<"Name: ";
-             getline(cin>>ws, name );
+      cout<<"Enter Your Information : "<<endl;
+      cout<<"Name: ";
+      getline(cin>>ws, name );
 
 
         // checking name's validity
@@ -107,68 +130,105 @@ string name;
              }
 
 
-          myshop.add_user(name);
+    myshop.add_user(name);
+    auto t=&(myshop.users_map.find(name)->second);
 
- return myshop.users_map[name];
+ return t;
 
 }
 
 
 void display_services(){
-cout<<" How can I help you ?"<<endl;
+
+
+   cout<<" How can I help you ?"<<endl;
    cout<<" 1- See profile . " <<endl;
    cout<<" 2- Modify profile . " <<endl;
    cout<<" 3- Explore our products ." <<endl;
    cout<<" 4- Add to basket . " <<endl;
    cout<<" 5- Exit . " <<endl;
 
+
 }
 
 void update_profile(Shop myshop, User& user)
-{ int a ;
+{
+    int a ;
+
     cout<<" what do you want to modify "<<endl;
     cout <<" 1- Username  "<<endl;
     cout <<" 2- Home address "<<endl;
     cout <<" 3- CreditCard "<<endl;
     cout <<" 4- password "<<endl;
-   cin>>a;
+
+    cin>>a;
+
    switch(a)
    {
+
     case 1:
+{
     user.update_name();
+    break;
+}
+
     case 2:
+{
     user.update_address();
+    break;
+}
+
     case 3:
+{
     user.update_creditCard();
+    break;
+}
+
     case 4:
+{
     user.get_password();
+    break;
+}
+
     default:
         exit(1);
    }
 
 }
 
-void do_service(int  choice , User& user   )
+
+
+
+void do_service(int  choice , User* Myuser  )
 {
 
-switch (choice) {
+User user=*Myuser;
+
+  switch (choice) {
 
 case 1 :  // viewing the profile
-    user.display_profile();
-    break;
+    {
+        user.display_profile();
+        break;
+    }
 
 case 2 : // modifying the profile
-    update_profile(myshop ,user);
-    break;
+    {
+        update_profile(myshop ,user);
+        break;
+    }
 
 case 3 : // exploring the products
    {
 
     cout<<" the categories "<<endl;
     myshop.display_categories();
-    string category_name;
+
+
     cout<<" please enter the name of the category "<<endl;
+    string category_name;
     cin>>category_name;
+
     myshop.display_products(category_name);
     break;
 
@@ -178,24 +238,27 @@ case 3 : // exploring the products
 case 4: // adding to basket
  {
 
-      cout<< " your basket "<<endl;
-      order Commande ;
-
+ cout<< " your basket "<<endl;
+// show the categories
+ order Commande ;
  char x;
  string ID, Category;
-      int num;
+ int num;
+
  do{
 
       cout<<" enter the informations of the product  that you want to buy "<<endl;
       cout<< " Category " ;
       cin>> Category;
+     // show the product
+
       cout<< " the ID " ;
       cin>> ID;
+
       cout<< " the quantity" ;
       cin>>num;
 
 Product t;
-
 
 if(myshop.check_product(ID)!=true)
 {
@@ -210,13 +273,10 @@ else{
      {
        if(it==Category)
        {
-
            t=it.storage_house.find(ID)->second;
-
        }
      }
-
-}
+ }
 
 add_to_order(num,t,Commande);
 
@@ -225,12 +285,10 @@ add_to_order(num,t,Commande);
  cin>>x;
 
  } while (x== 'y') ;
+  // check if order is not null
 
-myshop.add_request(Commande);
-
- break;
-
-
+  myshop.add_request(Commande);
+   break;
 
 
  }
@@ -238,8 +296,6 @@ myshop.add_request(Commande);
 default : exit(1);
 
 }
-
-
 
 }
 
@@ -276,49 +332,51 @@ switch (a){
 
 
 case 1:   // user case
+{
 
- cout<< " Hello user ";
-        cout<<"1- Sign in "<<"\t"<<"2- Sign up"<<endl;
+ cout<< " Hello user "<<endl;
+ cout<<"1- Sign in "<<"\t"<<"2- Sign up"<<endl;
+
         int b;
         cin>>b;
 
            while(b!=1 && b!=2)
             {
                 cout<<"Invalid answer ! please try again ( Enter 1 or 2 )  "<<endl;
-
                 cin>>b;
             }
 
 
 
-        switch (b)
+  switch (b)
 {
+
 case 1 :   // log in
 
   {
         string name, pw ;
-    bool account_changed=false;
+         bool account_changed=false;
 
-    cout<< "  ----------------------- Welcome to our online shop ----------------------- ";
+    cout<< "  ----------------------- Welcome to our online shop ----------------------- "<<endl;
     cout << " Please  fill the following information "<<endl;
 
              cout<<" Name : ";
              getline(cin>>ws,name);
 
              auto it = myshop.users_map.find(name);
-             User& customer =it->second;
+             User* customer =&(it->second);
 
              while(it==myshop.users_map.end())
              {
 
-                cout<< " This user name already exists "<<endl;
+                cout<< " This user name doesn't exist "<<endl;
                 cout<<"1- Create an account \t  2- Try again"<<endl;
 
 
                 int reponse;
                 cin>>reponse;
 
-                  while(reponse!=1 || reponse!=2 ){
+                  while(reponse!=1 && reponse!=2 ){
 
                         cout<< " invalid answer , please try again . ";
                          cin>>reponse;
@@ -327,7 +385,8 @@ case 1 :   // log in
 
                 if( reponse == 1)
                 {
-                    customer= create_an_account();
+                    customer=create_an_account();
+                    cout<<"Account created successfully ! " <<endl;
                     account_changed=true;
                     break;
                 }
@@ -340,7 +399,7 @@ case 1 :   // log in
                   getline(cin>>ws,name);
 
                   it = myshop.users_map.find(name);
-                  customer =it->second;
+                  customer =&(it->second);
 
                 }
 
@@ -376,6 +435,7 @@ do {
 
 }while(x=='y');
 
+
 break;
 
   } // case 1
@@ -383,11 +443,12 @@ break;
 
 
 case 2 :  // register
-    cout<< "  ----------------------- Welcome to our online shop ----------------------- "<<endl;
+{
 
-  User& customer=create_an_account();
+cout<< "  ----------------------- Welcome to our online shop ----------------------- "<<endl;
 
-cout<< " Hello " <<customer.get_name();
+  User* customer=create_an_account();
+  cout<< " Hello " <<customer->get_name();
 
  char x;
  int replay;
@@ -395,16 +456,44 @@ cout<< " Hello " <<customer.get_name();
   do {
       display_services();
       do_service(replay,customer);
+
       cout<< " return to the services   y/n " <<endl;
       cin>>x;
 
 }while(x=='y');
 
+break;
+
+}
+
+
+}
+
+if()//??????????????????????????????????????????
+{
+
+order removed_from_queue;
+double price=0;
+removed_from_queue=myshop.remove_request();
+myshop.bill(removed_from_queue , price );
+
+
+cout<<" Confirm purchase : "<<endl;
+int confirmation;
+cin>>confirmation;
+
+if(myshop.check_if_payed(confirmation,removed_from_queue,price))
+    {
+        myshop.delivery(removed_from_queue);
+    }
 }
 
 
 
 
+break;
+
+} // end of case user --------------------------------------------------------------------------------------------
 
 
 case 2:  // seller case
@@ -511,6 +600,7 @@ break;
  }
 
 case 3: // a responsable  of the online  shop
+{
 
  int answer;
  do{
@@ -572,29 +662,17 @@ default :
  }
 while ( answer != 4);
 
+break;
+
+}
+
+
 }
 
 
 
 
 
-order removed_from_queue;
-double price=0;
-removed_from_queue=myshop.remove_request();
-myshop.bill(removed_from_queue , price );
-
-
-
-
-cout<<" Confirm purchase "<<endl;
-int confirmation;
-cin>>confirmation;
-
-if(myshop.check_if_payed(confirmation,removed_from_queue,price))
-    {
-    myshop.delivery(removed_from_queue);
-
-}
 
 cout<<" Thank you for your visit "<<endl;
 

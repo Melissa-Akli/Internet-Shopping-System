@@ -95,7 +95,7 @@ void User::update_creditCard()
        cout<<"Enter  credit Cards' ID  Number : ";
       getline(cin>>ws,CreditCard.number );
 
-      while(!isvalid_Number(CreditCard.number))
+      while(!isvalid_Number(CreditCard.number)||CreditCard.number.size()!=16)
       {
           cout<<"Invalid ID , try again ! "<<endl;
           cout<<"ID Number : ";
