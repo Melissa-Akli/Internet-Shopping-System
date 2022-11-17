@@ -68,12 +68,12 @@ void read_from_file( )
     {
        User obj;
        file_read_obj.read((char*)&obj, sizeof(obj));
-       myshop.add_user(obj);
+       //myshop.add_user(obj);
     }
 
     file_read_obj.close();
 
-
+/*
       // to add categories to category_file
     file_read_obj.open("Categorie_data.txt",ios::in);
 
@@ -99,6 +99,7 @@ void read_from_file( )
     }
 
     file_read_product.close();
+    */
 
 }
 
@@ -145,7 +146,7 @@ void display_services(){
    cout<<" 1- See profile . " <<endl;
    cout<<" 2- Modify profile . " <<endl;
    cout<<" 3- Explore our products ." <<endl;
-   cout<<" 4- Add to basket . " <<endl;
+   cout<<" 4- Add to cart . " <<endl;
    cout<<" 5- Exit . " <<endl;
 
 
@@ -235,10 +236,11 @@ case 3 : // exploring the products
    }
 
 
-case 4: // adding to basket
+case 4: // adding to cart
  {
 
- cout<< " your basket "<<endl;
+ cout<< " your shopping cart "<<endl;
+
 // show the categories
  order Commande ;
  char x;
@@ -247,10 +249,14 @@ case 4: // adding to basket
 
  do{
 
-      cout<<" enter the informations of the product  that you want to buy "<<endl;
-      cout<< " Category " ;
+      cout<< " Enter the category  " ;
       cin>> Category;
      // show the product
+
+     cout<< " The products : " <<endl;
+myshop.display_products(Category);
+
+cout<<" enter the informations of the product  that you want to buy "<<endl;
 
       cout<< " the ID " ;
       cin>> ID;
@@ -307,9 +313,11 @@ int main()
 
 
 
-    //read_from_file();
+
+    read_from_file();
 
     int a;
+    double price=0;
 
     cout<<" -------------------------- INTERNET SHOPPING SYSTEM -------------------------------"<<endl;
 
@@ -348,10 +356,10 @@ case 1:   // user case
 
 
 
-  switch (b)
-{
+           switch (b)     // user switch
+    {
 
-case 1 :   // log in
+    case 1 :   // log in
 
   {
         string name, pw ;
@@ -442,7 +450,7 @@ break;
 
 
 
-case 2 :  // register
+            case 2 :  // register
 {
 
 cout<< "  ----------------------- Welcome to our online shop ----------------------- "<<endl;
@@ -469,12 +477,11 @@ break;
 
 }
 
-if()//??????????????????????????????????????????
-{
+if(!myshop.commande.empty())
+    {
+order removed_from_queue=myshop.remove_request();
 
-order removed_from_queue;
-double price=0;
-removed_from_queue=myshop.remove_request();
+
 myshop.bill(removed_from_queue , price );
 
 
@@ -603,7 +610,9 @@ case 3: // a responsable  of the online  shop
 {
 
  int answer;
+
  do{
+
    cout<<" Welcome to responsable services ,how can I help you ? "<<endl;
    cout<<" 1- Display  the existing categories . " <<endl;
    cout<<" 2- Add a new category . " <<endl;
@@ -677,7 +686,6 @@ break;
 cout<<" Thank you for your visit "<<endl;
 
 
-    add_to_file();
 
 return 0;
 }

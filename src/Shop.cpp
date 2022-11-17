@@ -176,6 +176,8 @@ void Shop::add_request(order& order1)
 
     order Shop::remove_request() // the online shop will serve the customer : check if it exists then check if memeber , increase total purchase return the total price
     {
+
+
         order top= commande.top();
          commande.pop();
 
