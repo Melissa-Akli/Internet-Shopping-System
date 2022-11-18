@@ -46,6 +46,7 @@ void Shop::add_user (User user)
        {
            users_map.insert({user.get_name(), user});
        }
+
 }
 
 

@@ -10,98 +10,202 @@ using namespace std;
 
 Shop myshop;  // global object
 
-void add_to_file ()
+void add_to_file_map_user()
 {
-       ofstream file_write_obj;
-       file_write_obj.open("user_data.txt", ios::out);
+    string name;
+    double member;
+    Card Credit;
+    address Home_add;
+    string pass;
 
 
-     for(pair<string,User>it: myshop.users_map)
-     {
 
-         file_write_obj.write((char*)&it.second, sizeof(it.second));
+    ofstream os;
+    os.open("user_data.txt", ios::out);     // it will delete everything in the file and add all objects from scratch
 
-     }
-
-        file_write_obj.close();
-
-
-    file_write_obj.open("Categorie_data.txt",ios::out);
-
-     for(int i=0; i<myshop.categories.size(); i++)
-     {
-        file_write_obj.write((char*)&(myshop.categories[i].Category_name), sizeof(myshop.categories[i].Category_name));
-     }
-
-    file_write_obj.close();
+    for(pair<string,User>it: myshop.users_map)
+    {
+        name=(it.second.get_name());
+        member=(it.second.get_membership_count());
+        Credit.number=(it.second.get_card()).number;
+        Credit.ExpiryDate=(it.second.get_card()).ExpiryDate;
+        Home_add=(it.second.get_address());
+        pass=(it.second.get_password());
 
 
-    file_write_obj.open("Product_data.txt",ios::out);
+        /*os<<name<<","<<member<<","<<Credit.number<<",";
+        os<< Credit.ExpiryDate.day<<","<< Credit.ExpiryDate.month<<","<< Credit.ExpiryDate.year<<",";
+        os<<Home_add.region<<","<<Home_add.street<<","<<Home_add.home_number<<",";
+        os<<pass<<endl;    // don't forget endl otherwise it will write everything in one file*/
 
-
-          for(auto position: myshop.categories)
-          {
-              for(pair<string,Product>iter:position.storage_house )
-              {
-
-                  file_write_obj.write((char*)&iter.second, sizeof(iter.second));
-
-              }
-          }
-
-
-          file_write_obj.close();
-
+        os<<name<<endl;
+        os<<member<<endl;
+        os<<Credit.number<<endl;
+        os<< Credit.ExpiryDate.day<<endl;
+        os<< Credit.ExpiryDate.month<<endl;
+        os<< Credit.ExpiryDate.year<<endl;
+        os<<Home_add.region<<endl;
+        os<<Home_add.street<<endl;
+        os<<Home_add.home_number<<endl;
+        os<<pass<<endl;
+    }
 }
 
 
 
 
-void read_from_file( )
+
+void add_to_file_categories(void)
 {
-    ifstream file_read_obj;
+    string name;
 
-    // to add users to users_file
-    file_read_obj.open("user_data.txt", ios::in);
 
-    while (!file_read_obj.eof())
+
+    ofstream os;
+    os.open("categories.txt",ios::app);
+
+
+    for(auto it:myshop.categories)
     {
-       User obj;
-       file_read_obj.read((char*)&obj, sizeof(obj));
-       //myshop.add_user(obj);
+        name=it.Category_name;
+
+        os<<name<<endl;
     }
 
-    file_read_obj.close();
-
-/*
-      // to add categories to category_file
-    file_read_obj.open("Categorie_data.txt",ios::in);
-
-         while (!file_read_obj.eof())
-         {
-               string cat_name;
-               file_read_obj.read((char*)&(cat_name), sizeof(cat_name));
-               myshop.add_category(cat_name);
-         }
-
-    file_read_obj.close();
+}
 
 
-     // to add products to product_file
-    ifstream file_read_product;
-    file_read_product.open("Product_Data.txt", ios::in);
 
-    while (!file_read_product.eof())
+void add_to_file_storagehouse(void)
+{
+   string productname;
+   string categorie;
+   string productID;
+   double price;
+   long int quantity;
+
+   ofstream os;
+   os.open("products.txt",ios::app);
+
+  for(auto position:myshop.categories)
+  {
+
+
+  for(pair<string,Product>it: position.storage_house)
     {
-       Product produit;
-       file_read_product.read((char*)&produit, sizeof(produit));
-       myshop.add_product(produit);
+        productname=(it.second.getProduct_name());
+        categorie=(it.second.category_name);
+        productID=(it.second.getProduct_ID());
+        price=(it.second.getUnitprice());
+        quantity=(it.second.getAvailable_quantity());
+
+
+
+        os<<productname<<","<<categorie<<","<<productID<<","<<price<<","<<quantity<<endl;
     }
 
-    file_read_product.close();
+  }
+
+
+
+
+}
+
+void read_from_file()
+{
+
+   ifstream read;
+   read.open("user_data.txt");
+   if(!read.is_open()) cout<<"File failed to open!"<<endl;
+
+  if(read.peek()==EOF)cout<<"Empty file"<<endl;
+  else
+  {
+
+
+    string name;
+    double member;
+    Card Credit;
+    address Home_add;
+    string pass;
+
+    string line;
+
+    while(!read.eof())
+    {
+        /*
+        getline(read,name,',' );
+        getline(read,line,',' );
+        member=atof(line.c_str());
+        getline(read,Credit.number,',');
+
+        getline(read,line,',' );
+        Credit.ExpiryDate.day=(int)atof(line.c_str());
+
+        getline(read,line,',' );
+        Credit.ExpiryDate.month=(int)atof(line.c_str());
+
+        getline(read,line,',' );
+        Credit.ExpiryDate.year=(int)atof(line.c_str());
+
+        getline(read,Home_add.region,',' );
+        getline(read,Home_add.street,',' );
+
+        getline(read,line,',' );
+        Home_add.home_number=(int)atof(line.c_str());
+
+        getline(read,pass,'\n' );
+
+    }
     */
 
+    getline(read,name );
+        getline(read,line );
+        member=atof(line.c_str());
+        getline(read,Credit.number);
+
+        getline(read,line );
+        Credit.ExpiryDate.day=(int)atof(line.c_str());
+
+        getline(read,line );
+        Credit.ExpiryDate.month=(int)atof(line.c_str());
+
+        getline(read,line );
+        Credit.ExpiryDate.year=(int)atof(line.c_str());
+
+        getline(read,Home_add.region );
+        getline(read,Home_add.street );
+
+        getline(read,line );
+        Home_add.home_number=(int)atof(line.c_str());
+
+        getline(read,pass );
+
+
+
+    User user( name,pass, Home_add.region ,Home_add.street, Home_add.home_number,Credit.number , Credit.ExpiryDate.day,Credit.ExpiryDate.month,Credit.ExpiryDate.year );
+        user.update_membership(member);
+
+       myshop.add_user(user);
+
+
+
+
+
 }
+
+  }
+
+
+
+}
+
+
+
+
+
+
+
 
 //------------------------------------Functions --------------------------------------------------------------------------------
 
@@ -314,377 +418,25 @@ int main()
 
 
 
-    read_from_file();
-
-    int a;
-    double price=0;
-
-    cout<<" -------------------------- INTERNET SHOPPING SYSTEM -------------------------------"<<endl;
-
-    cout<<"\nAre You : "<<endl;
-    cout <<"1- Buyer "<<"\t"<<"2-Seller "<<"\t"<<"3- responsable "<<endl;
-
-    cin>>a;
-
-
-           while( a!=1 && a!=2 && a!=3 )
-            {
-                cout<<"Invalid answer ! please try again ( Enter 1 or 2 ) "<<endl;
-                cin>>a;
-            }
-
-
-
-
-switch (a){
-
-
-case 1:   // user case
+read_from_file();
+for(pair<string,User>it: myshop.users_map)
 {
-
- cout<< " Hello user "<<endl;
- cout<<"1- Sign in "<<"\t"<<"2- Sign up"<<endl;
-
-        int b;
-        cin>>b;
-
-           while(b!=1 && b!=2)
-            {
-                cout<<"Invalid answer ! please try again ( Enter 1 or 2 )  "<<endl;
-                cin>>b;
-            }
-
-
-
-           switch (b)     // user switch
-    {
-
-    case 1 :   // log in
-
-  {
-        string name, pw ;
-         bool account_changed=false;
-
-    cout<< "  ----------------------- Welcome to our online shop ----------------------- "<<endl;
-    cout << " Please  fill the following information "<<endl;
-
-             cout<<" Name : ";
-             getline(cin>>ws,name);
-
-             auto it = myshop.users_map.find(name);
-             User* customer =&(it->second);
-
-             while(it==myshop.users_map.end())
-             {
-
-                cout<< " This user name doesn't exist "<<endl;
-                cout<<"1- Create an account \t  2- Try again"<<endl;
-
-
-                int reponse;
-                cin>>reponse;
-
-                  while(reponse!=1 && reponse!=2 ){
-
-                        cout<< " invalid answer , please try again . ";
-                         cin>>reponse;
-                  }
-
-
-                if( reponse == 1)
-                {
-                    customer=create_an_account();
-                    cout<<"Account created successfully ! " <<endl;
-                    account_changed=true;
-                    break;
-                }
-
-
-                else
-                {
-
-                  cout<<" Name : ";
-                  getline(cin>>ws,name);
-
-                  it = myshop.users_map.find(name);
-                  customer =&(it->second);
-
-                }
-
-
-              } // if user-name already exist
-
-
-
-             if(!account_changed)
-             {
-                cout<<" Enter password : ";
-                getline(cin>>ws,pw);
-
-
-                while(it->second.get_password()!=pw)
-                     {
-                         cout<<"Invalid password , try again !"<<endl;
-                         getline(cin>>ws,pw);
-                     }
-             }
-
-
-int reply;
-char x;
-
-do {
-      display_services();
-
-      cin>>reply;
-      do_service(reply,customer);
-      cout<< " return to the services   y/n " <<endl;
-      cin>>x;
-
-}while(x=='y');
-
-
-break;
-
-  } // case 1
-
-
-
-            case 2 :  // register
-{
-
-cout<< "  ----------------------- Welcome to our online shop ----------------------- "<<endl;
-
-  User* customer=create_an_account();
-  cout<< " Hello " <<customer->get_name();
-
- char x;
- int replay;
-
-  do {
-      display_services();
-      do_service(replay,customer);
-
-      cout<< " return to the services   y/n " <<endl;
-      cin>>x;
-
-}while(x=='y');
-
-break;
-
+    it.second.display_profile();
 }
 
-
-}
-
-if(!myshop.commande.empty())
-    {
-order removed_from_queue=myshop.remove_request();
-
-
-myshop.bill(removed_from_queue , price );
-
-
-cout<<" Confirm purchase : "<<endl;
-int confirmation;
-cin>>confirmation;
-
-if(myshop.check_if_payed(confirmation,removed_from_queue,price))
-    {
-        myshop.delivery(removed_from_queue);
-    }
-}
-
-
-
-
-break;
-
-} // end of case user --------------------------------------------------------------------------------------------
-
-
-case 2:  // seller case
- {
-
-  int answer;
-
-do {
-   cout<<" Welcome to seller services ,how can I help you ?"<<endl;
-   cout<<" 1- Display  the existing categories . " <<endl;
-   cout<<" 2- Add a new product ." <<endl;
-   cout<<" 3- Remove a product . " <<endl;
-   cout<<" 4- Exit . " <<endl;
-   cin>>answer;
-
-
-        switch(answer){
-
-case 1 :
-{
-   cout<<" ____________________the existing categories____________________ "<<endl;
-   int i=0;
-   for( auto it : myshop.categories)
-
-    {
-     cout<<i<<"- "<<it.Category_name << endl;
-     i++;
-
-    }
-
-    break;
-}
-
-case 2 :
-{
-    cout<< " ____________________Adding a   new product____________________ " <<endl;
-
-    cout<< "the available categories :"<<endl;
-
-    int i=0;
-   for( auto it : myshop.categories)
-    {
-     cout<<i<<"- "<<it.Category_name << endl;
-     i++;
-   }
-   cout<<" enter the category of your product "<<endl;
-   string category;
-   cin>> category;
-
-
-   // if the product exist and he want to increamenet the quantity ???? but i think it's better to add it as a case in the function add_product because the seller won't know it the product exists or no
-
-   string Name , id;
-    double price;
-    long int  quantity;
-
-   cout<< "  Please enter the description of your product " <<endl;
-
-   cout<< " Name : ";
-   cin>> Name;
-   cout<< " ID : ";
-   cin>> id;
-   cout<< "  The unit price : ";
-   cin>> price;
-   cout<< " The quantity : ";
-   cin>> quantity;
-
-   Product produit( Name ,category, id , price , quantity );
-   myshop.add_product(category,produit);
-   break;
-
-}
-
-
-case 3 :
-{
-    cout<< " ____________________Removing a product____________________ " <<endl;
-    cout<< " Enter the name of the product :  ";
-    string product;
-    cin>>product;
-     myshop.remove_product(product);
-     // you wonder if he does npt know the name of the product what can he do !!! logically he knows the name since he is the seller
-     //otherwise we can display the products that he already added and separate files ......
-
-     // we assume that the seller removing his own products
-     // otherwise we'll be obliged to separate the list of products of each seller and check for each operation
-     break;
-}
-
-
-case 4:
-    exit(1);
-
-default :
-    cout<<"Invalid answer ! please try again "<<endl;
-    cin>>answer;
-
-}
-
-} while (answer);
-
-break;
-
- }
-
-case 3: // a responsable  of the online  shop
-{
-
- int answer;
-
- do{
-
-   cout<<" Welcome to responsable services ,how can I help you ? "<<endl;
-   cout<<" 1- Display  the existing categories . " <<endl;
-   cout<<" 2- Add a new category . " <<endl;
-   cout<<" 3- Remove a category . " <<endl;
-   cout<<" 4- Exit . " <<endl;
-   cin>>answer;
-
-   switch(answer){
-
-case 1 :
-{
-   cout<<" ____________________the existing categories____________________ "<<endl;
-   int i=0;
-
-   for( auto it : myshop.categories)
-    {
-     cout<<i<<"- "<<it.Category_name << endl;
-     i++;
-    }
-
-   break;
-}
-
-
-case 2 :
-{
-    cout<< " ____________________Adding a new category____________________ " <<endl;
-     cout<< " Name " ;
-     string category;
-     cin>>category;
-     myshop.add_category(category) ;
-     break;
-}
-
-
-case 3 :
-{
-    cout<< " ____________________Removing a category____________________ " <<endl;
-    cout<< " Enter the name of the category :  ";
-    string category;
-    cin>>category;
-     myshop.remove_category(category) ;
-     break;
-
-}
-
-case 4 :
-exit(1);
-
-
-default :
-    cout<<"Invalid answer ! please try again "<<endl;
-}
-
-
- }
-while ( answer != 4);
-
-break;
-
-}
-
-
-}
-
-
-
-
-
+create_an_account();
+create_an_account();
+
+Category cat("Food");
+Product produit("bimo","Food","123456789",230.00,123);
+//create_an_account();
 
 cout<<" Thank you for your visit "<<endl;
 
+
+add_to_file_map_user();
+add_to_file_categories();
+add_to_file_storagehouse();
 
 
 return 0;

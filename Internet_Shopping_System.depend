@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1668632337 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\shop.cpp
+1668718438 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\shop.cpp
 	"Shop.h"
 
 1668462912 c:\users\zak\desktop\poo projects\internet_shopping_system\include\shop.h
@@ -19,7 +19,7 @@
 1668541604 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\user.cpp
 	"User.h"
 
-1668463215 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
+1668722597 c:\users\zak\desktop\poo projects\internet_shopping_system\include\user.h
 	<iostream>
 	<functions.h>
 	<string>
@@ -28,7 +28,7 @@
 1668247750 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\category.cpp
 	"Category.h"
 
-1668695437 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\main.cpp
+1668737113 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\main.cpp
 	<iostream>
 	"functions.h"
 	"User.h"
@@ -47,7 +47,7 @@
 	"Product.h"
 	"User.h"
 
-1668466655 c:\users\zak\desktop\poo projects\internet_shopping_system\include\product.h
+1668728806 c:\users\zak\desktop\poo projects\internet_shopping_system\include\product.h
 	<string>
 
 1668466663 source:c:\users\zak\desktop\poo projects\internet_shopping_system\src\product.cpp
