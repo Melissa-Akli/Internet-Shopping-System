@@ -46,7 +46,6 @@ void Shop::add_user (User user)
        {
            users_map.insert({user.get_name(), user});
        }
-
 }
 
 
@@ -115,26 +114,35 @@ void Shop::add_category( string type)
 
 
 
- void Shop::add_product(Category type, const Product& produit)
+ void Shop::add_product( const Product& produit)
  {
-    //vector<Category>::iterator it;
-     for(auto it:categories)
+
+    auto it=categories.begin();
+     for( ;it!=categories.end();it++)
      {
-         if((it.Category_name)==type.Category_name)
+         if((it->Category_name)==produit.category_name)
          {
-            it.insertproduct(produit);
+            it->insertproduct(produit);
+            return ;
          }
-         else{
 
-            add_category(type.Category_name);
 
-         }
+
+     }
+
+     if(it==categories.end())
+     {
+            add_category(produit.category_name);
+            int n= categories.size();
+            categories[n-1].insertproduct(produit);
+
+
      }
 
  }
 
 
- void Shop::add_product(Product produit)
+/* void Shop::add_product(Product produit)
  {
     for(auto it: categories)
     {
@@ -148,6 +156,7 @@ void Shop::add_category( string type)
     }
 
  }
+ */
 
 
 
@@ -170,7 +179,16 @@ void Shop::add_category( string type)
 
 void Shop::add_request(order& order1)
     {
-        commande.push(order1);
+
+
+       if(order1.customer.checkMembership())
+       {
+           member_commande.push(order1);
+       }
+       else {
+        non_member_commande.push(order1);
+       }
+
     }
 
 
@@ -179,16 +197,32 @@ void Shop::add_request(order& order1)
     {
 
 
-        order top= commande.top();
-         commande.pop();
+    if(!member_commande.empty())
+    {
+   order top= member_commande.front();
+         member_commande.pop();
+         return top;
 
-        return top;
+    }
+    else
+    {
+        if(!non_member_commande.empty())
+        {
+            order top=non_member_commande.front();
+            non_member_commande.pop();
+            return top;
+
+        }
+        else cout<<" no order detected in the shop "<<endl;
+    }
+
     }
 
 
 void Shop::bill(order myorder ,double& price)
  {
         myorder.show_order();
+
     double total_price =0;
 
     for(auto it :myorder.ordered_item)
@@ -204,9 +238,9 @@ void Shop::bill(order myorder ,double& price)
 
 }
 
-bool Shop::check_if_payed(int answer ,order myorder, double total_price  )
+bool Shop::check_if_payed(char answer ,order myorder, double total_price  )
 {
-    if(answer==1)
+    if(answer=='y')
     {
         if (myorder.customer.check_CreditCard_validity())
         {
@@ -250,7 +284,7 @@ void Shop::display_categories(void)
 {
     for(auto it:categories)
     {
-        cout<<it.Category_name;
+        cout<<it.Category_name<<endl;
     }
 }
 
@@ -278,24 +312,41 @@ void Shop::remove_product(string produit_ID)
 
 
 
- void Shop::display_products(Category type)
+ void Shop::display_products(string type)
 {
 
-    if(type.storage_house.empty())
+
+    for(auto it:categories)
+
     {
+      if((it.Category_name)==type)
+           {
+
+
+          if(it.storage_house.empty())
+                {
         cout<<" This category is empty"<<endl;
-        return;
+                 return;
+
+                }
+           else{
+
+        for(auto position: it.storage_house)
+         {
+       position.second.ProductDescription();
+
+              }
+
+
     }
 
-    for(auto it:type.storage_house)
 
-    {
-       it.second.ProductDescription();
-
+           }
     }
+
+
 
 }
-
 
 
 
