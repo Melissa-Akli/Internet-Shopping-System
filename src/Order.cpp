@@ -38,6 +38,9 @@ void order::add_item(int n, Product t) // n: the number of item for product t
     ordered_item.push_front(p);
 
  }
+  else {
+    cout<<" this quantity is not availabe "<<endl;
+  }
 
 }
 
@@ -53,17 +56,18 @@ void order::remove_item(int n, Product &t)
 
 
 
-void order:: show_order(){
+void order:: show_order()
+{
 
     int i=1;
 
     cout<<customer.get_name()<<endl;
 
-    cout<<setw(4)<<" item "<<setw(5)<<" name "<<setw(5)<<"quantity"<<endl;
+    cout<<setw(4)<<" item "<<setw(10)<<" name "<<setw(10)<<"quantity"<<endl;
 
 for(auto itr=ordered_item.begin();itr!=ordered_item.end();itr++){
 
-    cout<<setw(4)<< i<<setw(5)<< (*itr).p.name<<setw(5)<<(*itr).quantity<<endl;
+    cout<<setw(4)<< i<<setw(10)<< itr->p.name<<setw(10)<<itr->quantity<<endl;
 }
 
 }
@@ -81,7 +85,7 @@ bool order::check_item(item t)// we will check the unordered maps if it contains
 bool order::operator == (   const order&  order1 )const
 
 {
-    return  this ->customer.checkMembership() && order1.customer.checkMembership() ;
+    return  this ->customer.get_is_member() == order1.customer.get_is_member();
 }
 
 bool order::operator != (   const order&  order1 )const
@@ -92,13 +96,14 @@ bool order::operator != (   const order&  order1 )const
 
 bool order::operator <  (    const order&  order1 )const
 {
-    return !(this->customer.checkMembership()) && order1.customer.checkMembership();
+    return this->customer.get_is_member() < order1.customer.get_is_member();
 }
 
 bool order::operator >  (   const order&  order1 )const
 {
-    return this->customer.checkMembership() && !(order1.customer.checkMembership());
+    return this->customer.get_is_member() > order1.customer.get_is_member();
 }
+
 
 
 
