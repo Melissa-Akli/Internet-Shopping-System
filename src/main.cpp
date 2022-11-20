@@ -9,7 +9,6 @@ using namespace std;
 // inclue chrono to compute time c
 
 Shop myshop;  // global object
-
 void add_to_file_map_user()
 {
     string name;
@@ -101,7 +100,11 @@ void add_to_file_storagehouse(void)
 
 
 
-        os<<productname<<","<<categorie<<","<<productID<<","<<price<<","<<quantity<<endl;
+        os<<productname<<endl;
+        os<<categorie<<endl;
+        os<<productID<<endl;
+        os<<price<<endl;
+        os<<quantity<<endl;
     }
 
   }
@@ -111,7 +114,7 @@ void add_to_file_storagehouse(void)
 
 }
 
-void read_from_file()
+void read_from_file_user()
 {
 
    ifstream read;
@@ -133,34 +136,11 @@ void read_from_file()
 
     while(!read.eof())
     {
-        /*
-        getline(read,name,',' );
-        getline(read,line,',' );
-        member=atof(line.c_str());
-        getline(read,Credit.number,',');
 
-        getline(read,line,',' );
-        Credit.ExpiryDate.day=(int)atof(line.c_str());
 
-        getline(read,line,',' );
-        Credit.ExpiryDate.month=(int)atof(line.c_str());
-
-        getline(read,line,',' );
-        Credit.ExpiryDate.year=(int)atof(line.c_str());
-
-        getline(read,Home_add.region,',' );
-        getline(read,Home_add.street,',' );
-
-        getline(read,line,',' );
-        Home_add.home_number=(int)atof(line.c_str());
-
-        getline(read,pass,'\n' );
-
-    }
-    */
-
-    getline(read,name );
+        getline(read,name );
         getline(read,line );
+
         member=atof(line.c_str());
         getline(read,Credit.number);
 
@@ -187,6 +167,110 @@ void read_from_file()
         user.update_membership(member);
 
        myshop.add_user(user);
+
+
+
+
+
+}
+
+  }
+
+
+
+}
+
+
+
+
+
+
+
+void read_from_file_category()
+{
+
+   ifstream read;
+   read.open("categories.txt");
+   if(!read.is_open()) cout<<"File failed to open!"<<endl;
+
+  if(read.peek()==EOF)cout<<"Empty file"<<endl;
+  else
+  {
+
+
+    string name;
+
+
+    while(!read.eof())
+    {
+
+
+        getline(read,name );
+
+
+
+
+
+
+       myshop.add_category(name);
+
+
+
+
+
+}
+
+  }
+
+
+
+}
+
+
+
+
+void read_from_file_product()
+{
+
+   ifstream read;
+   read.open("products.txt");
+   if(!read.is_open()) cout<<"File failed to open!"<<endl;
+
+  if(read.peek()==EOF)cout<<"Empty file"<<endl;
+  else
+  {
+
+
+    string name;
+    string categorie;
+    string ID;
+    double price;
+    long int quantity;
+
+    string segment;
+
+
+    while(!read.eof())
+    {
+
+
+        getline(read,name );
+        getline(read,categorie );
+        getline(read,ID);
+        getline(read,segment);
+
+        price=atof(segment.c_str());
+
+        getline(read,segment);
+        quantity=(long int)atof(segment.c_str());
+
+
+
+
+
+
+       Product produit(name,categorie,ID,price,quantity);
+       myshop.add_product(produit);
 
 
 
@@ -372,7 +456,7 @@ Product t;
 
 if(myshop.check_product(ID)!=true)
 {
-    cout<<"We are sorry, the product you are searching for is not available ง"<<endl;
+    cout<<"We are sorry, the product you are searching for is not available ยง"<<endl;
 }
 
 
